@@ -18,7 +18,7 @@ public class Client01 {
         String printContent = Printer.print((BufferedReader bufferedReader) -> {
             String content = "";
             try{
-                content = bufferedReader.readLine();
+                content = bufferedReader.readLine() + bufferedReader.readLine();
             }catch(IOException ioexception){
                 System.out.println(ioexception.getStackTrace());
             }
