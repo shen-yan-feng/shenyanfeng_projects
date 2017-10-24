@@ -34,6 +34,8 @@ public class Client01 {
                 .collect(toList());
         integerListTemp.forEach(System.out::println);
         
+        System.out.println("----我是分隔线----");
+        
         //两个数组中的数，组合
         //数组{1,2,3}
         //数组{4,5,6}
@@ -41,7 +43,9 @@ public class Client01 {
         List<Integer> list01 = Arrays.asList(1,2,3);
         List<Integer> list02 = Arrays.asList(4,5,6);
         List<int[]> listResult = list01.stream()
-                .flatMap(i -> list02.stream().map(j -> new int[]{i,j}))
+                .flatMap(i -> list02.stream()
+                        .filter(j -> (i + j)%3 == 0)//i + j 之和能被3整除
+                        .map(j -> new int[]{i,j}))
                 .collect(toList());
         for(int[] arrayTemp : listResult){
             for(int i=0;i<arrayTemp.length;i++){
