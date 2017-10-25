@@ -8,6 +8,7 @@ package java8inaction.stream01;
 import java.util.Arrays;
 import static java.util.stream.Collectors.toList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -52,6 +53,71 @@ public class Client01 {
                 System.out.println(arrayTemp[i]);
             }
         }
+        
+        System.out.println("----我是分隔线----");
+        if(Restaurant.menu.stream()
+                .anyMatch(Dish::isVegetarian)){
+            System.out.println("The menu is (somewhat) vegetarian friendly!!");
+        }
+        
+        System.out.println("----我是分隔线----");
+        if(Restaurant.menu.stream()
+                .allMatch(d -> d.getCalories() < 1000)
+                ){
+            System.out.println("all dish's calories is less than 1000.");
+        }
+        
+        System.out.println("----我是分隔线----");
+        if(Restaurant.menu.stream()
+                .noneMatch(d -> d.getCalories() > 1000)
+                ){
+            System.out.println("all dish's calories is not more than 1000.");
+        }
+        
+        System.out.println("----我是分隔线----");
+        Optional<Dish> dish = Restaurant.menu.stream()
+                .filter(Dish::isVegetarian)
+                .findAny();        
+        System.out.println(dish.toString());
+        
+        System.out.println("----我是分隔线----");
+        Restaurant.menu.stream()
+                .filter(Dish::isVegetarian)
+                .findAny()
+                .ifPresent(d -> System.out.println(d));
+
+        System.out.println("----我是分隔线----");
+        List<Integer> someNumber = Arrays.asList(1,2,3,4,5);
+        Optional<Integer> dish02 = someNumber.stream()
+                .map(x -> x*x)
+                .filter(x -> x%3==0)
+                .findFirst();
+        System.out.println("dish02 = " + dish02);
+        
+        System.out.println("----我是分隔线----");
+        List<Integer> numbers = Arrays.asList(1,2,3,4,5);
+        int numberSum = numbers.stream()
+                //.reduce(0,(a,b) -> a+b);//result is 15
+                .reduce(0, Integer::sum);//result is 15
+        System.out.println("numberSum = " + numberSum);
+        int numberMultiple = numbers.stream()
+                //.reduce(0, (a,b) -> a*b);//result is 0
+                .reduce(1, (a,b) -> a*b);
+        System.out.println("numberMultiple = " + numberMultiple);
+        
+        System.out.println("----我是分隔线----");
+        List<Integer> numbers03 = Arrays.asList(1,2,3,4,5);
+        Optional<Integer> numberSum03 = numbers03.stream()
+                //.reduce(0,(a,b) -> a+b);//result is 15
+                .reduce(Integer::sum);//result is 15
+        System.out.println("numberSum03 = " + numberSum03);
+        
+        System.out.println("----我是分隔线----");
+        List<Integer> numbers04 = Arrays.asList(1,2,3,4,5);
+        Optional<Integer> numberSum04 = numbers04.stream()
+                //.reduce(0,(a,b) -> a+b);//result is 15
+                .reduce(Integer::max);
+        System.out.println("numberSum04 = " + numberSum04);
     }
     
 }
