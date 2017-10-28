@@ -5,10 +5,16 @@
  */
 package java8inaction.stream01;
 
+import java.io.File;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import static java.util.stream.Collectors.toList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
+import java.io.IOException;
 
 /**
  *
@@ -118,6 +124,48 @@ public class Client01 {
                 //.reduce(0,(a,b) -> a+b);//result is 15
                 .reduce(Integer::max);
         System.out.println("numberSum04 = " + numberSum04);
+        
+        System.out.println("----我是分隔线----");
+        Stream<String> streamTemp = Stream.of("java8","in","actions");
+        //streamTemp.forEach(System.out::println);//打印出来
+        streamTemp.map(String::toUpperCase).forEach(System.out::println);//转换成大写字母再打印出来
+        
+        System.out.println("----我是分隔线----");
+        System.out.println("print an empty Stream");
+        Stream streamEmpty = Stream.empty();
+        streamEmpty.forEach(System.out::println);
+        
+        System.out.println("----我是分隔线----");
+        System.out.println("build stream from Array");
+        Stream<String> streamTemp02 = Arrays.stream(new String[]{"java8","in","action"});//code like this is ok
+        streamTemp02.forEach(System.out::println);
+        
+        System.out.println("----我是分隔线----");
+        System.out.println("build stream from file");
+        try(Stream<String> lines = Files.lines(Paths.get("E:\\GitHub\\shenyanfeng_projects\\JAVA8INACTION\\trunk\\Java8InAction\\testfile\\a.txt"), Charset.defaultCharset())){
+            Stream<String> streamTemp03 = lines.flatMap(line -> Arrays.stream(line.split("")));
+            streamTemp03.forEach(System.out::println);
+        }catch(IOException e){
+            System.out.println(e.getStackTrace());
+        }
+        
+        System.out.println("----我是分隔线----");
+        System.out.println("build stream from function");
+        Stream.iterate(0, n -> n+2)
+                .limit(10)
+                .forEach(System.out::println);
+        
+        System.out.println("----我是分隔线----");
+        System.out.println("build stream from function02");
+        Stream.iterate(new Integer[]{0,1}, t -> new Integer[]{t[1],t[0]+t[1]})
+                .limit(10)
+                .forEach(t -> System.out.println(t[0] + " " + t[1]));
+        
+        System.out.println("----我是分隔线----");
+        System.out.println("build stream from function03");
+        Stream.generate(Math::random)
+                .limit(5)
+                .forEach(System.out::println);
     }
     
 }
