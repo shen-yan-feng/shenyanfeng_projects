@@ -18,6 +18,10 @@ import java.util.Map;
  */
 public class Client03 {
 
+    public enum CaloricLevel {
+        DIET, NORMAL, FAT
+    };
+
     public static void main(String[] args) {
 
         System.out.println("test Collectors.counting()");
@@ -30,19 +34,19 @@ public class Client03 {
         Optional<Dish> mostCalorieDish = Restaurant.menu.stream()
                 .collect(Collectors.maxBy(dishCaloriesComparator));
         System.out.println("the mostCalorieDish is " + mostCalorieDish);
-        
+
         System.out.println("----我是分隔线----");
         System.out.println("to test Collectors.summingInt()");
         int summing01 = Restaurant.menu.stream()
                 .collect(Collectors.summingInt(Dish::getCalories));
         System.out.println("summing01 = " + summing01);
-        
+
         System.out.println("----我是分隔线----");
         System.out.println("to test averagingInt()");
         double aveargeCalories = Restaurant.menu.stream()
                 .collect(Collectors.averagingInt(Dish::getCalories));
         System.out.println("the aveargeCalories = " + aveargeCalories);
-        
+
         System.out.println("----我是分隔线----");
         System.out.println("to test Collectors.summarizingInt");
         IntSummaryStatistics intSummaryStatistics = Restaurant.menu.stream()
@@ -53,25 +57,36 @@ public class Client03 {
         System.out.println("the intSummaryStatistics.getMax() is " + intSummaryStatistics.getMax());
         System.out.println("the intSummaryStatistics.getMin() is " + intSummaryStatistics.getMin());
         System.out.println("the intSummaryStatistics.getSum() is " + intSummaryStatistics.getSum());
-        
+
         System.out.println("----我是分隔线----");
         System.out.println("to test Collectors.joining()");
         String joinName = Restaurant.menu.stream()
                 .map(Dish::getName)
                 .collect(Collectors.joining(","));
         System.out.println("the joinName is " + joinName);
-        
+
         System.out.println("----我是分隔线----");
         System.out.println("to test Collectors.reducing()");
         int summingCalories = Restaurant.menu.stream()
-                .collect(Collectors.reducing(0, Dish::getCalories, (i,j) -> i+j));
+                .collect(Collectors.reducing(0, Dish::getCalories, (i, j) -> i + j));
         System.out.println("the summingCalories is " + summingCalories);
-        
+
         System.out.println("----我是分隔线----");
         System.out.println("to test Collectors.groupingBy()");
-        Map<Dish.Type,List<Dish>> map = Restaurant.menu.stream()
+        Map<Dish.Type, List<Dish>> map = Restaurant.menu.stream()
                 .collect(Collectors.groupingBy(Dish::getType));
         System.out.println("the map is " + map);
+
+        System.out.println("----我是分隔线----");
+        System.out.println("to test Collectors.groupingBy() second");
+        Map<CaloricLevel, List<Dish>> mapCaloricLevel = Restaurant.menu.stream()
+                .collect(Collectors.groupingBy(dish -> {
+                    if (dish.getCalories() <= 400) {
+                        return CaloricLevel.DIET;
+                    }else if(dish.getCalories() <= 700) return CaloricLevel.NORMAL;
+                    else return CaloricLevel.FAT;
+                }));
+        System.out.println("mapCaloricLevel is " + mapCaloricLevel);
 
     }
 }
