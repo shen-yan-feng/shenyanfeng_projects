@@ -11,6 +11,8 @@ import java.util.Optional;
 import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
+import java.util.Comparator;
+import java.util.Set;
 
 /**
  *
@@ -83,10 +85,57 @@ public class Client03 {
                 .collect(Collectors.groupingBy(dish -> {
                     if (dish.getCalories() <= 400) {
                         return CaloricLevel.DIET;
-                    }else if(dish.getCalories() <= 700) return CaloricLevel.NORMAL;
-                    else return CaloricLevel.FAT;
+                    } else if (dish.getCalories() <= 700) {
+                        return CaloricLevel.NORMAL;
+                    } else {
+                        return CaloricLevel.FAT;
+                    }
                 }));
         System.out.println("mapCaloricLevel is " + mapCaloricLevel);
 
+        System.out.println("----我是分隔线----");
+        System.out.println("to test Collectors.groupingBy() third");
+        Map<Dish.Type,Map<CaloricLevel,List<Dish>>> mapTypeCaloricLevel = Restaurant.menu.stream()
+                .collect(Collectors.groupingBy(Dish::getType, Collectors.groupingBy(dish -> {
+                    if (dish.getCalories() <= 400) {
+                        return CaloricLevel.DIET;
+                    } else if (dish.getCalories() > 400 && dish.getCalories() <= 700) {
+                        return CaloricLevel.NORMAL;
+                    } else {
+                        return CaloricLevel.FAT;
+                    }
+
+                }
+                )));
+        System.out.println("the mapTypeCaloricLevel is " + mapTypeCaloricLevel);
+
+        System.out.println("----我是分隔线----");
+        System.out.println("to test Collectors.groupingBy() fourth");
+        Map<Dish.Type,Long> mapTypeCount = Restaurant.menu.stream()
+                .collect(Collectors.groupingBy(Dish::getType,Collectors.counting()));
+        System.out.println("the mapTypeCount is " + mapTypeCount);
+        
+        System.out.println("----我是分隔线----");
+        System.out.println("to test Collectors.groupingBy() fifth");
+        Map<Dish.Type,Optional<Dish>> mapTypeMaxCalories = Restaurant.menu.stream()
+                .collect(Collectors.groupingBy(Dish::getType,Collectors.maxBy(Comparator.comparingInt(Dish::getCalories))));
+        System.out.println("the mapTypeMaxCalories is " + mapTypeMaxCalories);
+        
+        System.out.println("----我是分隔线----");
+        System.out.println("to test Collectors.groupingBy() sixth");
+        Map<Dish.Type,Integer> mapTypeSummingCalories = Restaurant.menu.stream()
+                .collect(Collectors.groupingBy(Dish::getType, Collectors.summingInt(Dish::getCalories)));
+        System.out.println("the mapTypeSummingCalories is " + mapTypeSummingCalories);
+        
+        System.out.println("----我是分隔线----");
+        System.out.println("to test Collectors.groupingBy() seventh");
+        Map<Dish.Type,Set<CaloricLevel>> mapTypeSet = Restaurant.menu.stream()
+                .collect(Collectors.groupingBy(Dish::getType, Collectors.mapping(dish ->{
+                    if(dish.getCalories() <= 400) return CaloricLevel.DIET;
+                    else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL;
+                    else return CaloricLevel.FAT;
+                }, Collectors.toSet())));
+        System.out.println("the mapTypeSet is " + mapTypeSet);
+        
     }
 }
