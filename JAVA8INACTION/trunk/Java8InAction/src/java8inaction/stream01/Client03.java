@@ -137,5 +137,12 @@ public class Client03 {
                 }, Collectors.toSet())));
         System.out.println("the mapTypeSet is " + mapTypeSet);
         
+        System.out.println("----我是分隔线----");
+        System.out.println("to test Collectors.partitioningBy() first");
+        Map<Boolean,List<Dish>> mapPartition01 = Restaurant.menu.stream()
+                .collect(Collectors.partitioningBy(Dish::isVegetarian));
+        System.out.println("the mapPartition01 is " + mapPartition01);
+        
+        
     }
 }
