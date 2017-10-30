@@ -6,6 +6,7 @@
 package java8inaction.stream01;
 
 import java.util.stream.Stream;
+import java.util.function.Function;
 
 /**
  *
@@ -27,11 +28,40 @@ public class Client04 {
         System.out.println(ParallelStreams.parallelSum(4L));
         
         System.out.println("----我是分隔线----");
-        System.out.println("Runtime.getRuntime().availableProcessors() is " + Runtime.getRuntime().availableProcessors());        
+        System.out.println("Runtime.getRuntime().availableProcessors() is " + Runtime.getRuntime().availableProcessors());       
+        
+        System.out.println("----我是分隔线----");
+        
+        Long durationSequentialSum = measureSumPerf(ParallelStreams::sequentialSum,1000000L);
+        System.out.println("ParallelStreams::sequentialSum spent time " + durationSequentialSum);
+        
+        Long durationIterativeSum = measureSumPerf(ParallelStreams::iterativeSum,1000000L);
+        System.out.println("ParallelStreams::iterativeSum spent time " + durationIterativeSum);
+        
+        Long durationParallelSum = measureSumPerf(ParallelStreams::parallelSum,1000000L);
+        System.out.println("ParallelStreams::parallelSum spent time " + durationParallelSum);
+        
+        Long durationRangedSum = measureSumPerf(ParallelStreams::rangedSum,1000000L);
+        System.out.println("ParallelStreams::rangedSum spent time " + durationRangedSum);
+        
+        Long durationParallelRangedSum = measureSumPerf(ParallelStreams::parallelRangedSum,1000000L);
+        System.out.println("ParallelStreams::parallelRangedSum spent time " + durationParallelRangedSum);
+        
         
     }
     
-    measureSumPerf(Function)
+    public static Long measureSumPerf(Function<Long,Long> adder,Long n){
+        Long fastest = Long.MAX_VALUE;
+        
+        Long startPoint = System.nanoTime();
+        Long applyResult = adder.apply(n);
+        Long endPoint = System.nanoTime();
+        Long duration = endPoint - startPoint;
+        if (duration < fastest){
+            fastest = duration;
+        }        
+        return fastest;
+    }
     
     
 }
