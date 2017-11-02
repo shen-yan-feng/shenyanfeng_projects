@@ -5,8 +5,13 @@
  */
 package java8inaction.stream01;
 
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.RecursiveTask;
 import java.util.concurrent.Future;
+import java.util.concurrent.ForkJoinPool;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  *
@@ -46,10 +51,20 @@ public class CountTask extends RecursiveTask<Integer> {
         return sum;
     }
     
-    public static void main(String[] args){
-        CountTask countTask01 = new CountTask(1,7,2);
-        int result = countTask01.compute();
-        System.out.println("the result is " + result);
+    public static void main(String[] args) {
+        ForkJoinPool forkJoinPool = new ForkJoinPool();
+        CountTask countTask01 = new CountTask(1,10000,2);
+        //int result = countTask01.compute();//这样也可以执行
+        //System.out.println("the result is " + result);//这样也可以执行
+        Future<Integer> result = forkJoinPool.submit(countTask01);
+        try {
+            System.out.println("the result is " + result.get());
+        } catch (InterruptedException ex) {
+            Logger.getLogger(CountTask.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ExecutionException ex) {
+            Logger.getLogger(CountTask.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
     }
     
