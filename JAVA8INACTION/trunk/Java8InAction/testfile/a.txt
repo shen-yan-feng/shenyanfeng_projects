@@ -1,3 +1,9 @@
+<%@page contentType="text/html;charset=GBK" %>
+<%@page contentType="text/html;charset=GBK" %>
+<%@page contentType="text/html;charset=GBK" %>
+<%@page contentType="text/html;charset=GBK" %>
+<%@page contentType="text/html;charset=GBK" %>
+<%@page contentType="text/html;charset=GBK" %>
 abc
 defg
 hijklmn
