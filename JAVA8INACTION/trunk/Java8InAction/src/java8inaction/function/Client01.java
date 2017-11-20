@@ -18,7 +18,7 @@ public class Client01 {
     
     
     public static void main(String[] args){
-        Client01.subsets(Arrays.asList(1,2,3));
+        System.out.println(Client01.subsets(Arrays.asList(1,2,3)));
     }
     
     public static List<List<Integer>> subsets(List<Integer> list){
@@ -29,11 +29,10 @@ public class Client01 {
         }
         Integer first = list.get(0);
         List<Integer> rest = list.subList(1, list.size());
-        
+        System.out.println("rest = " + rest);
         List<List<Integer>> subans = subsets(rest);
-        //List<List<Integer>> subans2 = insertAll(first,subans);
+        //List<List<Integer>>1 subans2 = insertAll(first,subans);
         //return concat(subans,subans2);
-        
         return null;
         
     }
@@ -47,6 +46,12 @@ public class Client01 {
             result.add(list);
         }
         return result;        
+    }
+    
+    public static List<List<Integer>> concat(List<List<Integer>> a,List<List<Integer>> b){
+        List<List<Integer>> r = new ArrayList<>(a);
+        r.addAll(b);
+        return r;
     }
     
 }
