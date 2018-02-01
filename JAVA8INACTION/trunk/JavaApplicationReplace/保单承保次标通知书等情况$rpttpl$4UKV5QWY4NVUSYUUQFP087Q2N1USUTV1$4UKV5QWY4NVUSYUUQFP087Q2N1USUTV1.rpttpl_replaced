@@ -1,0 +1,768 @@
+<reportpage id=Z9O41A0XZPM81K890TBUMBTJ2K9DTCMY alias= name=B2017216 caption=保单承保次标通知书等情况 type=pagetpl>
+<option>
+maxcount=14
+bgimg_position=
+childindexs=WidgetPageLayout39,PAGEFLOAT
+width=100%
+taskid=BTNPFAM2BU26446TUY8IZLFIKDTL1FK4
+bgimg_repeat=no-repeat
+borderset=none
+isextend=false
+bgcolor=
+autosize=none
+ismini=false
+grp=EBI$13$BTNPFAM2BU26446TUY8IZLFIKDTL1FK4$/MED Reports/月报
+height=100%
+menutemplate=无导出.txt
+vertalign=relate
+foldline=true
+left=0px
+borderradius=5
+maxgridcount=1
+horzalign=relate
+disabled=false
+top=0px
+zindex=0
+</option>
+<body>
+<WidgetPageLayout id=WidgetPageLayout39 name=WidgetPageLayout>
+<option>
+bgimg_position=
+width=100%
+borderset=none
+bgimg_repeat=no-repeat
+isextend=false
+autosize=none
+ismini=false
+height=100%
+vertalign=top
+left=0
+borderradius=5
+horzalign=left
+enableSelect=false
+disabled=false
+zindex=0
+top=0
+</option>
+<body>
+<WidgetPageArea id=bodyarea name=BODYAREA>
+<option>
+bgimg_position=
+rptthemecaption=
+childindexs=WidgetLayout86
+width=100%
+bgimg_repeat=no-repeat
+borderset=rect
+isextend=false
+autosize=none
+bgcolor=
+bordertop="cl=#CCCCCC;stl=0;w=1"
+ismini=false
+height=100%
+vertalign=top
+left=0
+borderradius=5
+horzalign=left
+disabled=false
+zindex=0
+top=0
+</option>
+<body>
+<WidgetLayout id=WidgetLayout86 name=HHH2>
+<option>
+bgimg_position=
+width=1453
+vtype=0
+borderset=none
+bgimg_repeat=no-repeat
+isextend=false
+autosize=none
+ismini=false
+layouttype=layout3
+height=766
+vertalign=relate
+isStretch=false
+foldline=true
+left=0
+htype=0
+borderradius=5
+horzalign=relate
+disabled=false
+top=0
+zindex=0
+</option>
+<body>
+<WidgetSheet id=WidgetSheet55 name=HHH3>
+<option>
+bgimg_position=
+childindexs=WidgetText51
+width=100%
+borderset=rect
+bgimg_repeat=no-repeat
+isextend=false
+bgcolor=
+autosize=none
+ismini=false
+cell_padding=2,2,2,2
+height=100%
+vertalign=relate
+foldline=true
+left=0
+borderradius=5
+defborder="{""style"":""dotted"",""color"":""#9d9797"",""width"":1}"
+horzalign=relate
+disabled=false
+top=0
+zindex=0
+</option>
+<body>
+<WidgetText id=WidgetText51 name=HHH5>
+<option>
+bgimg_position=
+width=344
+align=center
+bgimg_repeat=no-repeat
+borderset=rect
+borderright="cl=#CCCCCC;stl=5;w=1"
+isextend=false
+autosize=content
+bordertop="cl=#CCCCCC;stl=5;w=1"
+ismini=false
+height=43
+vertalign=relate
+borderbottom="cl=#CCCCCC;stl=5;w=1"
+left=551
+borderleft="cl=#CCCCCC;stl=5;w=1"
+borderradius=5
+valign=middle
+horzalign=center
+disabled=false
+zindex=0
+top=10
+</option>
+<text>
+[{"t":"保单承保次标通知书等情况","stl":{"sz":28}}]
+</text>
+</WidgetText>
+</body>
+</WidgetSheet>
+<WidgetSheet id=WidgetSheet50 name=HHH4>
+<option>
+bgimg_position=
+childindexs=WidgetTplGrid68
+width=100%
+borderset=rect
+bgimg_repeat=no-repeat
+isextend=false
+bgcolor=
+autosize=none
+ismini=false
+cell_padding=2,2,2,2
+height=100%
+vertalign=relate
+foldline=true
+left=0
+borderradius=5
+defborder="{""style"":""dotted"",""color"":""#9d9797"",""width"":1}"
+horzalign=relate
+disabled=false
+top=0
+zindex=0
+</option>
+<body>
+<WidgetTplGrid id=WidgetTplGrid68 name=GRID1>
+<option>
+bgimg_position=
+width=1447
+bgimg_repeat=no-repeat
+borderset=none
+isextend=false
+autosize=none
+ismini=false
+height=55
+vertalign=relate
+left=0
+borderradius=5
+horzalign=center
+disabled=false
+zindex=0
+top=57
+</option>
+<grid rowcount=2 colcount=20>
+<style>
+fn=微软雅黑;sz=12;cl=#000000;stl=;lo=47;bkcl=#DDF0FF
+fn=微软雅黑;sz=12;cl=#000000;stl=;lo=47;bkcl=transparent
+fn=微软雅黑;sz=12;cl=#000000;stl=;lo=46;bkcl=transparent
+</style>
+<border>
+cl=#CCCCCC;stl=0;w=1
+cl=#000000;stl=0;w=1
+</border>
+<rows>
+24
+24
+</rows>
+<cols>
+72
+72
+72
+72
+72
+72
+72
+72
+72
+72
+72
+72
+72
+72
+72
+72
+72
+72
+72
+72
+</cols>
+<cells>
+<cl r=0 c=0>
+text=渠道
+indent=2.1.2.1
+</cl>
+<cl r=0 c=1>
+text=管理机构代码
+indent=2.1.2.1
+</cl>
+<cl r=0 c=2>
+text=管理机构名称
+indent=2.1.2.1
+</cl>
+<cl r=0 c=3>
+text=投保单号
+indent=2.1.2.1
+</cl>
+<cl r=0 c=4>
+text=投保年龄
+indent=2.1.2.1
+</cl>
+<cl r=0 c=5>
+text=被保人职业代码
+indent=2.1.2.1
+</cl>
+<cl r=0 c=6>
+text=主险
+indent=2.1.2.1
+</cl>
+<cl r=0 c=7>
+text=主险保费
+indent=2.1.2.1
+</cl>
+<cl r=0 c=8>
+text=照会标志
+indent=2.1.2.1
+</cl>
+<cl r=0 c=9>
+text=是否休检
+indent=2.1.2.1
+</cl>
+<cl r=0 c=10>
+text=是否调查
+indent=2.1.2.1
+</cl>
+<cl r=0 c=11>
+text=是否次标
+indent=2.1.2.1
+</cl>
+<cl r=0 c=12>
+text=次标原因名称
+indent=2.1.2.1
+</cl>
+<cl r=0 c=13>
+text=是否短缴
+indent=2.1.2.1
+</cl>
+<cl r=0 c=14>
+text=缴费金额
+indent=2.1.2.1
+</cl>
+<cl r=0 c=15>
+text=代理人工号
+indent=2.1.2.1
+</cl>
+<cl r=0 c=16>
+text=代理人姓名
+indent=2.1.2.1
+</cl>
+<cl r=0 c=17>
+text=保单状态
+indent=2.1.2.1
+</cl>
+<cl r=0 c=18>
+text=拒延原因
+indent=2.1.2.1
+</cl>
+<cl r=0 c=19>
+text=拒延取照会内容
+indent=2.1.2.1
+</cl>
+<cl r=1 c=0 stl=1 t=C l=0>
+exp=rs1.channl
+indent=2.1.2.1
+</cl>
+<cl r=1 c=1 stl=1 t=C l=0>
+exp=rs1.ORG_NO
+indent=2.1.2.1
+</cl>
+<cl r=1 c=2 stl=1 t=C l=0>
+exp=rs1.ORG_NAME
+indent=2.1.2.1
+</cl>
+<cl r=1 c=3 stl=1 t=C l=0>
+exp=rs1.prtno
+indent=2.1.2.1
+</cl>
+<cl r=1 c=4 stl=1 t=C l=0>
+exp=rs1.insuredappage
+indent=2.1.2.1
+</cl>
+<cl r=1 c=5 stl=1 t=C l=0>
+exp=rs1.occupationcode
+indent=2.1.2.1
+nulltozero=false
+</cl>
+<cl r=1 c=6 stl=1 t=C l=0>
+exp=rs1.riskcode
+indent=2.1.2.1
+</cl>
+<cl r=1 c=7 stl=2 t=N l=50.2>
+exp=rs1.prem
+groupnum=true
+indent=2.1.2.1
+l=50
+nulltozero=false
+</cl>
+<cl r=1 c=8 stl=1 t=C l=0>
+exp=rs1.ZHBZ
+indent=2.1.2.1
+</cl>
+<cl r=1 c=9 stl=1 t=C l=0>
+exp=rs1.SFTJ
+indent=2.1.2.1
+</cl>
+<cl r=1 c=10 stl=1 t=C l=0>
+exp=rs1.SFDC
+indent=2.1.2.1
+</cl>
+<cl r=1 c=11 stl=1 t=C l=0>
+exp=rs1.SFCB
+indent=2.1.2.1
+</cl>
+<cl r=1 c=12 stl=1 t=C l=0>
+exp=rs1.CBYYMC
+indent=2.1.2.1
+</cl>
+<cl r=1 c=13 stl=1 t=C l=0>
+exp=rs1.SFDJ
+indent=2.1.2.1
+</cl>
+<cl r=1 c=14 stl=2 t=N l=50.2>
+exp=rs1.paymoney
+groupnum=true
+indent=2.1.2.1
+l=50
+nulltozero=false
+</cl>
+<cl r=1 c=15 stl=1 t=C l=0>
+exp=rs1.agentcode
+indent=2.1.2.1
+</cl>
+<cl r=1 c=16 stl=1 t=C l=0>
+exp=rs1.AGENTNAME
+indent=2.1.2.1
+</cl>
+<cl r=1 c=17 stl=1 t=C l=0>
+exp=rs1.state
+indent=2.1.2.1
+</cl>
+<cl r=1 c=18 stl=1 t=C l=0>
+exp=rs1.JYYY
+indent=2.1.2.1
+</cl>
+<cl r=1 c=19 stl=1 t=C l=0>
+exp=rs1.JYQZHNR
+indent=2.1.2.1
+</cl>
+</cells>
+</grid>
+<floatfxqs>
+<floatfxq rect=0.0.20.2>
+<floatcell>
+<option>
+floatrange=0.1.20.2
+cell=A2
+float=vert
+splitfloatrect=false
+makedimfull=false
+filternotindimdata=false
+</option>
+<customgroup grouptype=0>
+</customgroup>
+</floatcell>
+</floatfxq>
+</floatfxqs>
+<defthemeset>
+{"gridborder":{"style":"solid","color":"#CCCCCC","width":1},"cellborder":{"style":"solid","color":"#CCCCCC","width":1},"defstl":{"wrap":false,"halign":2,"colspan":1,"indent":"2.1.2.1","bkcl":"transparent","rowspan":1,"type":"N","ishorz":true,"dec":2,"cl":"#000000","valign":2,"sz":12,"fn":"微软雅黑"}}
+</defthemeset>
+</WidgetTplGrid>
+</body>
+</WidgetSheet>
+</body>
+<layout colStretched=[] hgap=3 vgap=3>
+<rows count=2>
+-1,-1
+</rows>
+<cols count=1>
+-1
+</cols>
+<cells>
+<cell r=1 c=1 rowspan=1 colspan=1 linkid=WidgetSheet55 />
+<cell r=2 c=1 rowspan=1 colspan=1 linkid=WidgetSheet50 />
+</cells>
+</layout>
+</WidgetLayout>
+</body>
+</WidgetPageArea>
+<WidgetArea id=toparea name=TOPAREA>
+<option>
+bgimg_position=
+childindexs=WidgetParamDate29,WidgetParamEdit61
+width=100%
+borderset=rect
+horzgap=10
+bgimg_repeat=no-repeat
+isextend=false
+bgcolor=
+autosize=content
+ismini=false
+Cross_border=10
+height=100%
+vertalign=top
+borderbottom="cl=#CCCCCC;stl=0;w=1"
+left=0
+borderradius=5
+horzindent=0
+Vertical_border=5
+horzalign=left
+disabled=false
+top=0
+conditionArr=WidgetParamDate29,WidgetParamEdit61
+zindex=0
+</option>
+<body>
+<WidgetParamDate id=WidgetParamDate29 name=HHH11>
+<option>
+recordvalue=true
+validator=v && v.length > 0
+bgimg_repeat=no-repeat
+autosize=none
+paramname=@bbq
+height=22
+vertalign=relate
+left=0
+datetype=yearmonth
+note=年月不可为空
+top=5
+paramtype=yearmonth
+text=年月*
+bgimg_position=
+enabletime=false
+width=200
+paramindex=1
+pid=toparea
+borderset=none
+isextend=false
+ismini=false
+textvisible=true
+borderradius=5
+horzalign=relate
+disabled=false
+zindex=0
+</option>
+</WidgetParamDate>
+<WidgetParamEdit id=WidgetParamEdit61 name=HHH13>
+<option>
+recordvalue=true
+scale=2
+visible=false
+bgimg_repeat=no-repeat
+autosize=none
+paramname=@managecom
+height=22
+vertalign=relate
+length=10
+left=210
+note=空
+paramtype=string
+top=5
+text=传递参数
+bgimg_position=
+width=200
+paramindex=3
+borderset=none
+pid=toparea
+isextend=false
+ismini=false
+edittype=string
+borderradius=5
+textvisible=true
+horzalign=relate
+disabled=false
+zindex=0
+</option>
+</WidgetParamEdit>
+</body>
+</WidgetArea>
+</body>
+<layout>
+<rows count=2>
+30,767
+</rows>
+<cols count=1>
+1453
+</cols>
+<cells>
+<cell r=1 c=1 rowspan=1 colspan=1 linkid=toparea />
+<cell r=2 c=1 rowspan=1 colspan=1 linkid=bodyarea />
+</cells>
+</layout>
+</WidgetPageLayout>
+</body>
+<rptthemename>
+
+</rptthemename>
+<print>
+fix_fixrowcount=0
+direction=2
+margin_bottom=15
+headerFontSizeRate=1.0
+fix_floatcolcount=0
+fix_fixcolcount=0
+subfield_multiColumnDistance=0.0
+noPrintCol=
+printmode=1
+noPrintRow=
+margin_top=15
+fillrowcol=0
+subfield_rowwrapdatacount=0
+printZero=0
+pageHeader=
+papertype=A4
+fix_floatrowcount=0
+alwaysHead=63
+subfield_rowwrapdirection=0
+subfield_fixrowcolcount=0
+single_planarrowcount=0
+pageTail=
+subfield_rowwrapmaxcolcount=0
+printrate=1.0
+align=0
+cellFontSizeRate=1.0
+zoomCellFontSizeByViewRate=0
+planar_paginationtype=1
+zoomHeaderFontSizeByViewRate=0
+margin_left=15
+margin_right=15
+paginationtype=1
+layoutAutoSize=0
+valign=0
+planar_rowcountperpage=0
+</print>
+<datasource>
+<sql name=totalcount dbserver=ods>
+<sqlcontent>
+SELECT count(*) FROM (
+select (case b.salechnl  when '1' then '个险'
+                         when '3' then '银保'
+                         when '7' then '经代'
+       end)                     as CHANNL,--渠道,
+       a.managecom              as ORG_NO,--管理机构代码,
+       (select name from lis.ldcom where comcode=a.managecom)
+                                as ORG_NAME,--管理机构名称,
+       a.prtno                  as prtno,--投保单号,
+       b.insuredappage          as insuredappage,--投保年龄,
+       (select occupationcode from lis.lcinsured where contno=a.contno)
+                                as occupationcode,--被保人职业代码,
+       b.riskcode               as riskcode,--主险,
+       b.prem                   as prem,--主险保费,
+       (case when exists(select 'X' from lis.loprtmanager where code in ('03','04','17','82','83','85','86','89','BF00','15','21') and othernotype = '02' and stateflag <>'5' and (otherno = a.prtno or otherno=a.contno))
+             then '有'
+             else '无'
+        end)                    as ZHBZ,--照会标志, 
+       (case when exists(select 'X' from lis.loprtmanager where code='03' and othernotype = '02' and stateflag <>'5' and (otherno = a.prtno or otherno=a.contno))
+             then '是'
+             else '否'
+        end)                    as SFTJ,--是否休检,
+       (case when exists(select 'X' from lis.loprtmanager where code='04' and othernotype = '02' and stateflag <>'5' and (otherno = a.prtno or otherno=a.contno))
+             then '是'
+             else '否'
+        end)                    as SFDC,--是否调查,
+       (case when exists(select 'X' from lis.loprtmanager where code in ('82','83') and othernotype = '02' and stateflag <>'5' and (otherno = a.prtno or otherno=a.contno))
+             then '是'
+             else '否'
+        end)                    as SFCB,--是否次标,
+       (case when exists(select 'X' from lis.loprtmanager where code in ('82','83') and othernotype = '02' and stateflag <>'5' and (otherno = a.prtno or otherno=a.contno))
+              then (select icdname from lis.LDDisease where icdcode=(select icdcode from lis.lcuwdiseasereason where otherno=a.prtno and code in ('00','06','82','83') and rownum=1))
+        end)                    as CBYYMC,--次标原因名称,
+       (case when exists(select 'X' from lis.loprtmanager where code in ('15','21') and othernotype = '6' and stateflag <>'5' and (otherno = a.prtno or otherno=a.contno))
+             then '是'
+             else '否'
+       end)                    as SFDJ,--是否短缴,
+       (select sum(paymoney) from lis.ljtempfee where (otherno=a.prtno or otherno=a.contno) and othernotype in ('6','7') and confdate is not null)
+                               as paymoney,--缴费金额,
+       a.agentcode             as agentcode,--代理人工号,
+       (select name from lis.laagent where agentcode=a.agentcode)
+                                as AGENTNAME,--代理人姓名,
+       (case a.state     when '101'    then '有效'
+                         when '102'    then '缴费期满'
+                         when '103'    then 'APL垫满'
+                         when '104'    then 'APL中'
+                         when '105'    then '减额交清'
+                         when '106'    then '保费豁免' 
+                         when '107'    then '生命末期'
+                         when '108'    then '缓缴期内'
+                         when '201'    then '未经APL停效'
+                         when '202'    then 'APL结束停效'
+                         when '203'    then '中断APL停效'
+                         when '204'    then '贷款停效'
+                         when '205'    then '投连万能停效'
+                         when '206'    then '投连万能附约失效'
+                         when '401'    then '拒保'
+                         when '402'    then '延期'
+                         when '403'    then '取消'
+                         when '404'    then '犹豫期退保'
+                         when '301'    then '理赔(死亡)'
+                         when '302'    then '理赔(全残)'
+                         when '303'    then '理赔(重疾)'
+                         when '304'    then '理赔(生命末期)'
+                         when '305'    then '保障期满'
+                         when '306'    then '解约' 
+                         when '307'    then '公司解约'
+                         when '308'    then '停效二年'    
+                         when '309'    then '理赔(满额)'
+                         else a.state
+       end)                     as state,--保单状态,
+       (case when state in ('401','402') then (select icdname from lis.LDDisease where icdcode=(select icdcode  from lis.lcuwdiseasereason where otherno=a.prtno and polno=b.polno and code in ('00','06') and rownum=1))
+       end)                     as JYYY,--拒延原因,
+       (case when state in ('401','402','403') then (select remark from lis.loprtmanager where otherno=a.prtno and code in ('00','06','87') and othernotype = '02' and stateflag <>'5' and rownum=1)
+       end)                     as JYQZHNR --拒延取照会内容 
+   from lis.lccont a,lis.lcpol b
+   where  a.contno=b.contno 
+     and b.polno=b.mainpolno
+     and b.conttype = '1'--排除团险
+     --and a.firsttrialdate>=trunc(add_months(sysdate,-1),'mm')
+     --and a.firsttrialdate<=trunc(last_day(add_months(sysdate,-1)))
+     and a.firsttrialdate>=trunc(TO_DATE('<#=@BBQ#>','YYYYMM'),'mm')
+     and a.firsttrialdate<=trunc(last_day(TO_DATE('<#=@BBQ#>','YYYYMM')))
+     ) SS WHERE SS.ORG_NO LIKE SUBSTR('<#=@MANAGECOM#>',1,4)||'%'
+</sqlcontent>
+<sqlcolunm>
+COUNT(*);
+</sqlcolunm>
+</sql>
+<sql name=rs1 dbserver=ods>
+<sqlcontent>
+SELECT * FROM (
+select (case b.salechnl  when '1' then '个险'
+                         when '3' then '银保'
+                         when '7' then '经代'
+       end)                     as CHANNL,--渠道,
+       a.managecom              as ORG_NO,--管理机构代码,
+       (select name from lis.ldcom where comcode=a.managecom)
+                                as ORG_NAME,--管理机构名称,
+       a.prtno                  as prtno,--投保单号,
+       b.insuredappage          as insuredappage,--投保年龄,
+       (select occupationcode from lis.lcinsured where contno=a.contno)
+                                as occupationcode,--被保人职业代码,
+       b.riskcode               as riskcode,--主险,
+       b.prem                   as prem,--主险保费,
+       (case when exists(select 'X' from lis.loprtmanager where code in ('03','04','17','82','83','85','86','89','BF00','15','21') and othernotype = '02' and stateflag <>'5' and (otherno = a.prtno or otherno=a.contno))
+             then '有'
+             else '无'
+        end)                    as ZHBZ,--照会标志, 
+       (case when exists(select 'X' from lis.loprtmanager where code='03' and othernotype = '02' and stateflag <>'5' and (otherno = a.prtno or otherno=a.contno))
+             then '是'
+             else '否'
+        end)                    as SFTJ,--是否休检,
+       (case when exists(select 'X' from lis.loprtmanager where code='04' and othernotype = '02' and stateflag <>'5' and (otherno = a.prtno or otherno=a.contno))
+             then '是'
+             else '否'
+        end)                    as SFDC,--是否调查,
+       (case when exists(select 'X' from lis.loprtmanager where code in ('82','83') and othernotype = '02' and stateflag <>'5' and (otherno = a.prtno or otherno=a.contno))
+             then '是'
+             else '否'
+        end)                    as SFCB,--是否次标,
+       (case when exists(select 'X' from lis.loprtmanager where code in ('82','83') and othernotype = '02' and stateflag <>'5' and (otherno = a.prtno or otherno=a.contno))
+              then (select icdname from lis.LDDisease where icdcode=(select icdcode from lis.lcuwdiseasereason where otherno=a.prtno and code in ('00','06','82','83') and rownum=1))
+        end)                    as CBYYMC,--次标原因名称,
+       (case when exists(select 'X' from lis.loprtmanager where code in ('15','21') and othernotype = '6' and stateflag <>'5' and (otherno = a.prtno or otherno=a.contno))
+             then '是'
+             else '否'
+       end)                    as SFDJ,--是否短缴,
+       (select sum(paymoney) from lis.ljtempfee where (otherno=a.prtno or otherno=a.contno) and othernotype in ('6','7') and confdate is not null)
+                               as paymoney,--缴费金额,
+       a.agentcode             as agentcode,--代理人工号,
+       (select name from lis.laagent where agentcode=a.agentcode)
+                                as AGENTNAME,--代理人姓名,
+       (case a.state     when '101'    then '有效'
+                         when '102'    then '缴费期满'
+                         when '103'    then 'APL垫满'
+                         when '104'    then 'APL中'
+                         when '105'    then '减额交清'
+                         when '106'    then '保费豁免' 
+                         when '107'    then '生命末期'
+                         when '108'    then '缓缴期内'
+                         when '201'    then '未经APL停效'
+                         when '202'    then 'APL结束停效'
+                         when '203'    then '中断APL停效'
+                         when '204'    then '贷款停效'
+                         when '205'    then '投连万能停效'
+                         when '206'    then '投连万能附约失效'
+                         when '401'    then '拒保'
+                         when '402'    then '延期'
+                         when '403'    then '取消'
+                         when '404'    then '犹豫期退保'
+                         when '301'    then '理赔(死亡)'
+                         when '302'    then '理赔(全残)'
+                         when '303'    then '理赔(重疾)'
+                         when '304'    then '理赔(生命末期)'
+                         when '305'    then '保障期满'
+                         when '306'    then '解约' 
+                         when '307'    then '公司解约'
+                         when '308'    then '停效二年'    
+                         when '309'    then '理赔(满额)'
+                         else a.state
+       end)                     as state,--保单状态,
+       (case when state in ('401','402') then (select icdname from lis.LDDisease where icdcode=(select icdcode  from lis.lcuwdiseasereason where otherno=a.prtno and polno=b.polno and code in ('00','06') and rownum=1))
+       end)                     as JYYY,--拒延原因,
+       (case when state in ('401','402','403') then (select remark from lis.loprtmanager where otherno=a.prtno and code in ('00','06','87') and othernotype = '02' and stateflag <>'5' and rownum=1)
+       end)                     as JYQZHNR --拒延取照会内容 
+   from lis.lccont a,lis.lcpol b
+   where  a.contno=b.contno 
+     and b.polno=b.mainpolno
+     and b.conttype = '1'--排除团险
+     --and a.firsttrialdate>=trunc(add_months(sysdate,-1),'mm')
+     --and a.firsttrialdate<=trunc(last_day(add_months(sysdate,-1)))
+     and a.firsttrialdate>=trunc(TO_DATE('<#=@BBQ#>','YYYYMM'),'mm')
+     and a.firsttrialdate<=trunc(last_day(TO_DATE('<#=@BBQ#>','YYYYMM')))
+     ) SS WHERE SS.ORG_NO LIKE SUBSTR('<#=@MANAGECOM#>',1,4)||'%'
+</sqlcontent>
+<sqlcolunm>
+CHANNL;ORG_NO;ORG_NAME;PRTNO;INSUREDAPPAGE;OCCUPATIONCODE;RISKCODE;PREM;ZHBZ;SFTJ;SFDC;SFCB;CBYYMC;SFDJ;PAYMONEY;AGENTCODE;AGENTNAME;STATE;JYYY;JYQZHNR;
+</sqlcolunm>
+</sql>
+</datasource>
+<analyseoption>
+bbqoption_caption=全部数据期
+</analyseoption>
+
+</reportpage>

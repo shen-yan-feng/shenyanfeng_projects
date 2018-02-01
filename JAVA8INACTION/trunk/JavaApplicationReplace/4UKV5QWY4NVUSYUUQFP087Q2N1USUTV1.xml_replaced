@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<anaobj>
+<name>B2017216</name>
+<caption>保单承保次标通知书等情况</caption>
+<branchexp>if(@bbq='','空表','主分支')</branchexp>
+<createtime>1494498909560</createtime>
+<exttype>rpttpl</exttype>
+<group>/MED Reports/月报/</group>
+<id>4UKV5QWY4NVUSYUUQFP087Q2N1USUTV1</id>
+<mender>admin</mender>
+<modifytime>1494498909560</modifytime>
+<owner>admin</owner>
+<version>I6UMW0SWEYQFIZR6N8K9LUCTUX6XMQC6_20170511-183509</version>
+<params/>
+<info>
+<info>
+<branchs>
+<branch>
+<id>I5NMWXDTIYF4L04578KW4RQ7MI5XOP95</id>
+<name>空表</name>
+<owner>admin</owner>
+<mender>admin</mender>
+<createtime>1492651732474</createtime>
+<modifytime>1492651732474</modifytime>
+</branch>
+<branch>
+<owner>admin</owner>
+<mender>admin</mender>
+<createtime>1488849966663</createtime>
+<modifytime>1492651720755</modifytime>
+</branch>
+</branchs>
+<branchexp><![CDATA[if(@bbq='','空表','主分支')]]></branchexp>
+</info>
+</info>
+</anaobj>
