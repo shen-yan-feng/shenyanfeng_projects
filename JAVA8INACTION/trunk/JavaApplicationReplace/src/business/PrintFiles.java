@@ -3,7 +3,7 @@
  *替换文件中指定的字符串
  *生成新文件
  */
-package javaapplicationreplace;
+package business;
 
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
