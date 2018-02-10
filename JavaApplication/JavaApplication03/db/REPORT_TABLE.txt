@@ -1,0 +1,38 @@
+-- Create table
+create table REPORT_TABLE
+(
+  REPORT_NAME     VARCHAR2(200) not null,
+  TABLE_OWNER     VARCHAR2(50) not null,
+  TABLE_NAME      VARCHAR2(100) not null,
+  FIELD_NAME      VARCHAR2(100) not null,
+  MAKE_DATE       DATE,
+  MAKE_OPERATOR   VARCHAR2(20),
+  MODIFY_DATE     DATE,
+  MODIFY_OPERATOR VARCHAR2(20)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table REPORT_TABLE
+  add constraint PK_REPORT_TABLE primary key (REPORT_NAME, TABLE_OWNER, TABLE_NAME, FIELD_NAME)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
