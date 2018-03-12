@@ -1,4 +1,4 @@
-package facade.exceptions;
+package business.exceptions;
 
 public class NonexistentEntityException extends Exception {
     public NonexistentEntityException(String message, Throwable cause) {

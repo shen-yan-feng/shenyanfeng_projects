@@ -27,10 +27,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "ReportTable.findAll", query = "SELECT r FROM ReportTable r"),
     @NamedQuery(name = "ReportTable.findByReportName", query = "SELECT r FROM ReportTable r WHERE r.reportTablePK.reportName = :reportName"),
+    @NamedQuery(name = "ReportTable.findByTableOwner", query = "SELECT r FROM ReportTable r WHERE r.reportTablePK.tableOwner = :tableOwner"),
     @NamedQuery(name = "ReportTable.findByTableName", query = "SELECT r FROM ReportTable r WHERE r.reportTablePK.tableName = :tableName"),
     @NamedQuery(name = "ReportTable.findByFieldName", query = "SELECT r FROM ReportTable r WHERE r.reportTablePK.fieldName = :fieldName"),
-    @NamedQuery(name = "ReportTable.findByInsertDate", query = "SELECT r FROM ReportTable r WHERE r.insertDate = :insertDate"),
-    @NamedQuery(name = "ReportTable.findByInsertOperator", query = "SELECT r FROM ReportTable r WHERE r.insertOperator = :insertOperator"),
+    @NamedQuery(name = "ReportTable.findByMakeDate", query = "SELECT r FROM ReportTable r WHERE r.makeDate = :makeDate"),
+    @NamedQuery(name = "ReportTable.findByMakeOperator", query = "SELECT r FROM ReportTable r WHERE r.makeOperator = :makeOperator"),
     @NamedQuery(name = "ReportTable.findByModifyDate", query = "SELECT r FROM ReportTable r WHERE r.modifyDate = :modifyDate"),
     @NamedQuery(name = "ReportTable.findByModifyOperator", query = "SELECT r FROM ReportTable r WHERE r.modifyOperator = :modifyOperator")})
 public class ReportTable implements Serializable {
@@ -38,11 +39,11 @@ public class ReportTable implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected ReportTablePK reportTablePK;
-    @Column(name = "INSERT_DATE")
+    @Column(name = "MAKE_DATE")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date insertDate;
-    @Column(name = "INSERT_OPERATOR")
-    private String insertOperator;
+    private Date makeDate;
+    @Column(name = "MAKE_OPERATOR")
+    private String makeOperator;
     @Column(name = "MODIFY_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date modifyDate;
@@ -56,8 +57,8 @@ public class ReportTable implements Serializable {
         this.reportTablePK = reportTablePK;
     }
 
-    public ReportTable(String reportName, String tableName, String fieldName) {
-        this.reportTablePK = new ReportTablePK(reportName, tableName, fieldName);
+    public ReportTable(String reportName, String tableOwner, String tableName, String fieldName) {
+        this.reportTablePK = new ReportTablePK(reportName, tableOwner, tableName, fieldName);
     }
 
     public ReportTablePK getReportTablePK() {
@@ -68,20 +69,20 @@ public class ReportTable implements Serializable {
         this.reportTablePK = reportTablePK;
     }
 
-    public Date getInsertDate() {
-        return insertDate;
+    public Date getMakeDate() {
+        return makeDate;
     }
 
-    public void setInsertDate(Date insertDate) {
-        this.insertDate = insertDate;
+    public void setMakeDate(Date makeDate) {
+        this.makeDate = makeDate;
     }
 
-    public String getInsertOperator() {
-        return insertOperator;
+    public String getMakeOperator() {
+        return makeOperator;
     }
 
-    public void setInsertOperator(String insertOperator) {
-        this.insertOperator = insertOperator;
+    public void setMakeOperator(String makeOperator) {
+        this.makeOperator = makeOperator;
     }
 
     public Date getModifyDate() {

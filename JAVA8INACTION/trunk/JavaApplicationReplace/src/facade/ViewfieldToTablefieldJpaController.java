@@ -15,16 +15,16 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import model.ReportTable;
-import model.ReportTablePK;
+import model.ViewfieldToTablefield;
+import model.ViewfieldToTablefieldPK;
 
 /**
  *
- * @author Administrator
+ * @author HQST100207
  */
-public class ReportTableJpaController implements Serializable {
+public class ViewfieldToTablefieldJpaController implements Serializable {
 
-    public ReportTableJpaController(EntityManagerFactory emf) {
+    public ViewfieldToTablefieldJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -33,19 +33,19 @@ public class ReportTableJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(ReportTable reportTable) throws PreexistingEntityException, Exception {
-        if (reportTable.getReportTablePK() == null) {
-            reportTable.setReportTablePK(new ReportTablePK());
+    public void create(ViewfieldToTablefield viewfieldToTablefield) throws PreexistingEntityException, Exception {
+        if (viewfieldToTablefield.getViewfieldToTablefieldPK() == null) {
+            viewfieldToTablefield.setViewfieldToTablefieldPK(new ViewfieldToTablefieldPK());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(reportTable);
+            em.persist(viewfieldToTablefield);
             em.getTransaction().commit();
         } catch (Exception ex) {
-            if (findReportTable(reportTable.getReportTablePK()) != null) {
-                throw new PreexistingEntityException("ReportTable " + reportTable + " already exists.", ex);
+            if (findViewfieldToTablefield(viewfieldToTablefield.getViewfieldToTablefieldPK()) != null) {
+                throw new PreexistingEntityException("ViewfieldToTablefield " + viewfieldToTablefield + " already exists.", ex);
             }
             throw ex;
         } finally {
@@ -55,19 +55,19 @@ public class ReportTableJpaController implements Serializable {
         }
     }
 
-    public void edit(ReportTable reportTable) throws NonexistentEntityException, Exception {
+    public void edit(ViewfieldToTablefield viewfieldToTablefield) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            reportTable = em.merge(reportTable);
+            viewfieldToTablefield = em.merge(viewfieldToTablefield);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                ReportTablePK id = reportTable.getReportTablePK();
-                if (findReportTable(id) == null) {
-                    throw new NonexistentEntityException("The reportTable with id " + id + " no longer exists.");
+                ViewfieldToTablefieldPK id = viewfieldToTablefield.getViewfieldToTablefieldPK();
+                if (findViewfieldToTablefield(id) == null) {
+                    throw new NonexistentEntityException("The viewfieldToTablefield with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -78,19 +78,19 @@ public class ReportTableJpaController implements Serializable {
         }
     }
 
-    public void destroy(ReportTablePK id) throws NonexistentEntityException {
+    public void destroy(ViewfieldToTablefieldPK id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            ReportTable reportTable;
+            ViewfieldToTablefield viewfieldToTablefield;
             try {
-                reportTable = em.getReference(ReportTable.class, id);
-                reportTable.getReportTablePK();
+                viewfieldToTablefield = em.getReference(ViewfieldToTablefield.class, id);
+                viewfieldToTablefield.getViewfieldToTablefieldPK();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The reportTable with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The viewfieldToTablefield with id " + id + " no longer exists.", enfe);
             }
-            em.remove(reportTable);
+            em.remove(viewfieldToTablefield);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -99,19 +99,19 @@ public class ReportTableJpaController implements Serializable {
         }
     }
 
-    public List<ReportTable> findReportTableEntities() {
-        return findReportTableEntities(true, -1, -1);
+    public List<ViewfieldToTablefield> findViewfieldToTablefieldEntities() {
+        return findViewfieldToTablefieldEntities(true, -1, -1);
     }
 
-    public List<ReportTable> findReportTableEntities(int maxResults, int firstResult) {
-        return findReportTableEntities(false, maxResults, firstResult);
+    public List<ViewfieldToTablefield> findViewfieldToTablefieldEntities(int maxResults, int firstResult) {
+        return findViewfieldToTablefieldEntities(false, maxResults, firstResult);
     }
 
-    private List<ReportTable> findReportTableEntities(boolean all, int maxResults, int firstResult) {
+    private List<ViewfieldToTablefield> findViewfieldToTablefieldEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(ReportTable.class));
+            cq.select(cq.from(ViewfieldToTablefield.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -123,20 +123,20 @@ public class ReportTableJpaController implements Serializable {
         }
     }
 
-    public ReportTable findReportTable(ReportTablePK id) {
+    public ViewfieldToTablefield findViewfieldToTablefield(ViewfieldToTablefieldPK id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(ReportTable.class, id);
+            return em.find(ViewfieldToTablefield.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getReportTableCount() {
+    public int getViewfieldToTablefieldCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<ReportTable> rt = cq.from(ReportTable.class);
+            Root<ViewfieldToTablefield> rt = cq.from(ViewfieldToTablefield.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();
@@ -144,5 +144,5 @@ public class ReportTableJpaController implements Serializable {
             em.close();
         }
     }
-
+    
 }

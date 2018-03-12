@@ -1,4 +1,4 @@
-package facade.exceptions;
+package business.exceptions;
 
 import java.util.ArrayList;
 import java.util.List;

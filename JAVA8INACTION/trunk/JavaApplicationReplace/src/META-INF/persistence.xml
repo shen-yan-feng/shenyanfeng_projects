@@ -3,6 +3,7 @@
   <persistence-unit name="DataHandlerPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>model.ReportTable</class>
+    <class>model.ViewfieldToTablefield</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
       <property name="javax.persistence.jdbc.user" value="test"/>

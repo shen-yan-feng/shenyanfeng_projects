@@ -21,6 +21,9 @@ public class ReportTablePK implements Serializable {
     @Column(name = "REPORT_NAME")
     private String reportName;
     @Basic(optional = false)
+    @Column(name = "TABLE_OWNER")
+    private String tableOwner;
+    @Basic(optional = false)
     @Column(name = "TABLE_NAME")
     private String tableName;
     @Basic(optional = false)
@@ -30,8 +33,9 @@ public class ReportTablePK implements Serializable {
     public ReportTablePK() {
     }
 
-    public ReportTablePK(String reportName, String tableName, String fieldName) {
+    public ReportTablePK(String reportName, String tableOwner, String tableName, String fieldName) {
         this.reportName = reportName;
+        this.tableOwner = tableOwner;
         this.tableName = tableName;
         this.fieldName = fieldName;
     }
@@ -42,6 +46,14 @@ public class ReportTablePK implements Serializable {
 
     public void setReportName(String reportName) {
         this.reportName = reportName;
+    }
+
+    public String getTableOwner() {
+        return tableOwner;
+    }
+
+    public void setTableOwner(String tableOwner) {
+        this.tableOwner = tableOwner;
     }
 
     public String getTableName() {
@@ -64,6 +76,7 @@ public class ReportTablePK implements Serializable {
     public int hashCode() {
         int hash = 0;
         hash += (reportName != null ? reportName.hashCode() : 0);
+        hash += (tableOwner != null ? tableOwner.hashCode() : 0);
         hash += (tableName != null ? tableName.hashCode() : 0);
         hash += (fieldName != null ? fieldName.hashCode() : 0);
         return hash;
@@ -79,6 +92,9 @@ public class ReportTablePK implements Serializable {
         if ((this.reportName == null && other.reportName != null) || (this.reportName != null && !this.reportName.equals(other.reportName))) {
             return false;
         }
+        if ((this.tableOwner == null && other.tableOwner != null) || (this.tableOwner != null && !this.tableOwner.equals(other.tableOwner))) {
+            return false;
+        }
         if ((this.tableName == null && other.tableName != null) || (this.tableName != null && !this.tableName.equals(other.tableName))) {
             return false;
         }
@@ -90,7 +106,7 @@ public class ReportTablePK implements Serializable {
 
     @Override
     public String toString() {
-        return "model.ReportTablePK[ reportName=" + reportName + ", tableName=" + tableName + ", fieldName=" + fieldName + " ]";
+        return "model.ReportTablePK[ reportName=" + reportName + ", tableOwner=" + tableOwner + ", tableName=" + tableName + ", fieldName=" + fieldName + " ]";
     }
     
 }

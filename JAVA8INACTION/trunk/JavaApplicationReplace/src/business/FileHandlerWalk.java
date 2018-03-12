@@ -2,19 +2,18 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
-è¯¥ç¨‹åºä½œç”¨
-è¯»å–æŒ‡å®šç›®å½•ä¸‹é¢é¢æ–‡ä»¶
-æŠŠè¯¥æ–‡ä»¶çš„å†…å®¹å¯¼å…¥åˆ°æ•°æ®åº“è¡¨
-è¯¥æ–‡ä»¶çš„æ ¼å¼ç®€ä»‹å¦‚ä¸‹
-æ–‡æœ¬æ–‡ä»¶
-ç¬¬ä¸€åˆ— æ•°æ®åº“è¡¨çš„owneråå­—
-ç¬¬äºŒä¾‹ æ•°æ®åº“è¡¨çš„åå­—
-ç¬¬ä¸‰åˆ—åŠä»¥åå„åˆ— å­—æ®µçš„åå­—
-å„ä¸ªåˆ—ä»¥ç©ºæ ¼åˆ†éš”
+¸Ã³ÌĞò×÷ÓÃ
+¶ÁÈ¡Ö¸¶¨Ä¿Â¼ÏÂÃæ¶îÎÄ¼ş
+°Ñ¸ÃÎÄ¼şµÄÄÚÈİµ¼Èëµ½Êı¾İ¿â±í
+¸ÃÎÄ¼şµÄ¸ñÊ½¼ò½éÈçÏÂ
+ÎÄ±¾ÎÄ¼ş
+µÚÒ»ÁĞ Êı¾İ¿â±íµÄownerÃû×Ö
+µÚ¶şÀı Êı¾İ¿â±íµÄÃû×Ö
+µÚÈıÁĞ¼°ÒÔºó¸÷ÁĞ ×Ö¶ÎµÄÃû×Ö
+¸÷¸öÁĞÒÔ¿Õ¸ñ·Ö¸ô
  */
 package business;
 
-import business.FileHandler;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -26,20 +25,20 @@ import java.util.logging.Logger;
  *
  * @author Administrator
  */
-public class FileWalk {
+public class FileHandlerWalk {
 
     public void walkFile() {
-        Path startPath = Paths.get("C:\\TEMP");
+        Path startPath = Paths.get("c:\\temp");
         FileHandler fileHandler = new FileHandler();
         try {
             Files.walkFileTree(startPath, fileHandler);
         } catch (IOException ex) {
-            Logger.getLogger(FileWalk.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FileHandlerWalk.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     public static void main(String[] args) {
-        FileWalk fileWalk = new FileWalk();
+        FileHandlerWalk fileWalk = new FileHandlerWalk();
         fileWalk.walkFile();
     }
 

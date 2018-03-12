@@ -1,7 +1,9 @@
 /*
  *遍历指定目录下面的所有文件
  *替换文件中指定的字符串
+ * \\u20替换成空格 \\n替换成换行
  *生成新文件
+ *生成的SQL 人类容易看
  */
 package business;
 
@@ -21,7 +23,7 @@ import java.util.logging.Logger;
  *
  * @author HQST100207
  */
-public class PrintFiles extends SimpleFileVisitor<Path> {
+public class FileReplace extends SimpleFileVisitor<Path> {
 // Print information about
 // each type of file.
 
@@ -57,6 +59,12 @@ public class PrintFiles extends SimpleFileVisitor<Path> {
         return CONTINUE;
     }
     
+    /*
+    读出文件内容
+    替换中间的内容
+    \\u20替换成空格 \\n替换成换行
+    生成的SQL 人类容易看
+    */
     public void fileReplace(Path file){
         StringBuffer stringBuffer = new StringBuffer();//存储replace后的内容
         try {
@@ -69,7 +77,7 @@ public class PrintFiles extends SimpleFileVisitor<Path> {
             Files.createFile(replacedFile);//创建空文件 如果文件存在 会失败 抛出异常
             Files.write(replacedFile, stringBuffer.toString().getBytes());//写文件
         } catch (IOException ex) {
-            Logger.getLogger(PrintFiles.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FileReplace.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -77,11 +85,11 @@ public class PrintFiles extends SimpleFileVisitor<Path> {
         System.out.println("haha");
         
         Path startingDir = Paths.get("C:\\TEMP\\报表导出_解压后的");
-        PrintFiles pf = new PrintFiles();
+        FileReplace pf = new FileReplace();
         try {
             Files.walkFileTree(startingDir, pf);
         } catch (IOException ex) {
-            Logger.getLogger(PrintFiles.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FileReplace.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

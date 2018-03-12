@@ -1,4 +1,4 @@
-package facade.exceptions;
+package business.exceptions;
 
 public class PreexistingEntityException extends Exception {
     public PreexistingEntityException(String message, Throwable cause) {

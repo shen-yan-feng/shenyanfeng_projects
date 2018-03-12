@@ -17,6 +17,7 @@ import java.util.List;
 import model.ReportTable;
 import model.ReportTablePK;
 import facade.ReportTableJpaController;
+import java.nio.charset.Charset;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
@@ -34,15 +35,21 @@ public class FileHandler extends SimpleFileVisitor<Path> {
 
         ReportTable reportTable = new ReportTable();
         ReportTablePK reportTablePK = new ReportTablePK();
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("JavaApplication02PU");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("DataHandlerPU");
         ReportTableJpaController reportTableJpaController = new ReportTableJpaController(entityManagerFactory);
 
         System.out.println(file + " is visited.");
-        List<String> fileContentList = Files.readAllLines(file);
+        
+        //ÎÒÉú³ÉµÄÎÄ¼ş£¬ÓÃÕâÖÖ·½Ê½¶Á£¬²»³ö´í¡£
+        String charset = FileHandlerCharset.getFileCharsetCode(file);
+        List<String> fileContentList = Files.readAllLines(file,Charset.forName(charset));
+        //ÀîÈÕÃ÷Éú³ÉµÄÎÄ¼ş£¬ÓÃÕâÖÖ·½Ê½¶Á£¬²»³ö´í¡£
+        //List<String> fileContentList = Files.readAllLines(file);
+        
         for (String lineContentTemp : fileContentList) {
             String[] lineContent = lineContentTemp.split(" ");
-            for (int j = 2; j < lineContent.length; j++) {//æ•°ç»„indexä¸º0çš„å†…å®¹ï¼Œä¸ºtable ownerï¼Œindexä¸º1çš„å†…å®¹ï¼Œä¸ºtable_name,inexä¸º2åŠä»¥åçš„å†…å®¹ï¼Œä¸ºfield name
-                System.out.println(lineContent[0] + " " + lineContent[j]);
+            for (int j = 2; j < lineContent.length; j++) {//Êı×éindexÎª0µÄÄÚÈİ£¬Îªtable owner£¬indexÎª1µÄÄÚÈİ£¬Îªtable_name,inexÎª2¼°ÒÔºóµÄÄÚÈİ£¬Îªfield name
+                System.out.println(lineContent[0] + " " + lineContent[1] + " " + lineContent[j]);
 
                 reportTable.setReportTablePK(null);
                 reportTable.setMakeDate(null);
@@ -67,7 +74,7 @@ public class FileHandler extends SimpleFileVisitor<Path> {
                 reportTable.setModifyDate(curDate);
                 reportTable.setModifyOperator("TEST");
 
-                if ((reportTableJpaController.findReportTable(reportTablePK)) == null) {//è¡¨ä¸­æ²¡æœ‰è¯¥ä¸»é”®çš„è®°å½•ï¼Œé‚£ä¹ˆæ’å…¥ã€‚
+                if ((reportTableJpaController.findReportTable(reportTablePK)) == null) {//±íÖĞÃ»ÓĞ¸ÃÖ÷¼üµÄ¼ÇÂ¼£¬ÄÇÃ´²åÈë¡£
                     try {
                         reportTableJpaController.create(reportTable);
                     } catch (Exception ex) {
