@@ -10,6 +10,7 @@ package com.peter;
  * @author Administrator
  */
 public class BooleanGetBooleanTest {
+a
 
     
 }
