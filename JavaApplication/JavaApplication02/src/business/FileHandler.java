@@ -31,6 +31,7 @@ public class FileHandler extends SimpleFileVisitor<Path> {
 
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+        
 
         ReportTable reportTable = new ReportTable();
         ReportTablePK reportTablePK = new ReportTablePK();
