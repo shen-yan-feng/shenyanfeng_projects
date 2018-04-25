@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" generate-combined-fragments="true">  
+  <object id="1" language="java" name="test01.Handler" project="test01" file="/test01/src/test01/Handler.java" 
+    binary="false" label="handler" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="250" y="0"/>  
+  </object>  
+  <object id="2" language="java" name="test01.Address" project="test01" file="/test01/src/test01/Address.java" 
+    binary="false" label="address" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="181" y="0"/>  
+  </object>  
+  <object id="3" language="java" name="test01.User" project="test01" file="/test01/src/test01/User.java" binary="false" 
+    label="user" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="312" y="0"/>  
+  </object>
+</sequence-diagram>
