@@ -360,6 +360,9 @@ import com.google.common.annotations.VisibleForTesting;
  * @author Matt
  * @since 16-may-2003, i18n at 07-Feb-2006, redesign 01-Dec-2006
  */
+//org.eclipse.jface.window.ApplicationWindow
+//org.pentaho.di.core.AddUndoPositionInterface
+
 public class Spoon extends ApplicationWindow implements AddUndoPositionInterface, TabListener, SpoonInterface,
   OverwritePrompter, PDIObserver, LifeEventHandler, XulEventSource, XulEventHandler, PartitionSchemasProvider {
 
