@@ -362,7 +362,14 @@ import com.google.common.annotations.VisibleForTesting;
  */
 //org.eclipse.jface.window.ApplicationWindow
 //org.pentaho.di.core.AddUndoPositionInterface
-
+//org.pentaho.xul.swt.tab.TabListener 选中tab 不选中tab 关掉tab 三个动作
+//org.pentaho.di.core.gui.SpoonInterface 该接口包含static属性 指明菜单栏 菜单 等文件
+//org.pentaho.di.core.gui.OverwritePrompter 覆盖提示
+//org.pentaho.di.core.changed.PDIObserver 变化后更新
+//org.pentaho.di.core.lifecycle.LifeEventHandler 生命事件处理
+//org.pentaho.ui.xul.XulEventSource 
+//org.pentaho.ui.xul.impl.XulEventHandler
+//org.pentaho.di.ui.spoon.PartitionSchemasProvider   An interface to conceal partitions' obtaining routine
 public class Spoon extends ApplicationWindow implements AddUndoPositionInterface, TabListener, SpoonInterface,
   OverwritePrompter, PDIObserver, LifeEventHandler, XulEventSource, XulEventHandler, PartitionSchemasProvider {
 
