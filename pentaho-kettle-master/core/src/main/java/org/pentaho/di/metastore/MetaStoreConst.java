@@ -65,21 +65,32 @@ public class MetaStoreConst {
     if ( disableMetaStore ) {
       return null;
     }
+    //得到PENTAHO_METASTORE_FOLDER 元数据存储所在的文件夹
     String rootFolder = System.getProperty( Const.PENTAHO_METASTORE_FOLDER );
     if ( Utils.isEmpty( rootFolder ) ) {
+        //假如文件夹不存在
+        //得到默认的文件夹
       rootFolder = getDefaultPentahoMetaStoreLocation();
     }
+    //new 文件夹对应的File对象
     File rootFolderFile = new File( rootFolder );
+    //元数据folder对应的File对象
     File metaFolder = new File( rootFolder + File.separator + XmlUtil.META_FOLDER_NAME );
-    if ( !allowCreate && !metaFolder.exists() ) {
+    //不允许创建比如权限不足等 并且 文件夹不存在 那么返回空
+    if ( !allowCreate && !metaFolder.exists() ) {        
       return null;
     }
+    //如果文件夹不存在 那么建一个文件夹
+    //注意，和上面的那个if合起来看，这样写，简洁。上面用一个return null 避免写if else 这样嵌套的逻辑流。
     if ( !rootFolderFile.exists() ) {
       rootFolderFile.mkdirs();
     }
 
+    //org.pentaho.metastore.stores.xml.XmlMetaStore
+    //new一个XmlMetaStore
     XmlMetaStore metaStore = new XmlMetaStore( rootFolder );
     if ( allowCreate ) {
+        //如果允许创建 那么设置名字
       metaStore.setName( Const.PENTAHO_METASTORE_NAME );
     }
     return metaStore;

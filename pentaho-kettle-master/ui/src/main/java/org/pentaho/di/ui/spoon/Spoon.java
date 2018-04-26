@@ -446,25 +446,34 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
   //org.pentaho.di.core.logging.LogChannelInterface
   private static LogChannelInterface log;
 
+  //org.eclipse.swt.widgets.Display
   private Display display;
 
+  //org.eclipse.swt.widgets.Shell
   private Shell shell;
 
+  //org.pentaho.di.ui.core.dialog.Splash
   private static Splash splash;
 
+  //org.pentaho.di.core.logging.FileLoggingEventListener
   private static FileLoggingEventListener fileLoggingEventListener;
 
   private boolean destroy;
 
+  //org.eclipse.swt.custom.SashForm
   private SashForm sashform;
 
+  //org.pentaho.xul.swt.tab.TabSet
   public TabSet tabfolder;
 
   // THE HANDLERS
+  //org.pentaho.di.ui.spoon.delegates.SpoonDelegates
   public SpoonDelegates delegates = new SpoonDelegates( this );
 
+  //org.pentaho.di.ui.spoon.SharedObjectSyncUtil
   private SharedObjectSyncUtil sharedObjectSyncUtil = new SharedObjectSyncUtil( this );
 
+  //org.pentaho.di.core.RowMetaAndData
   public RowMetaAndData variables = new RowMetaAndData( new RowMeta() );
 
   /**
@@ -474,26 +483,34 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
 
   private boolean stopped;
 
+  //org.eclipse.swt.graphic.Cursor
   private Cursor cursor_hourglass, cursor_hand;
 
+  //org.pentaho.di.ui.core.PropsUI
   public PropsUI props;
 
+  //org.pentaho.di.repository.Repository
   public Repository rep;
   private String repositoryName;
 
   // private RepositorySecurityManager securityManager;
 
+  //org.pentaho.di.repository.RepositoryCapabilities
   public RepositoryCapabilities capabilities;
 
   // Save the last directory saved to for new files
   // TODO: Save the last saved position to the defaultSaveLocation
+  //org.pentaho.di.repository.RepositoryDirectoryInterface
   private RepositoryDirectoryInterface defaultSaveLocation = null;
 
   // Associate the defaultSaveLocation with a given repository; We should clear this out on a repo change
+  //org.pentaho.di.repository.Repository
   private Repository defaultSaveLocationRepository = null;
 
+  //org.eclipse.swt.custom.CTabItem
   private CTabItem view, design;
 
+  //org.eclipse.swt.widgets.Text
   public Text selectionFilter;
 
   private org.eclipse.swt.widgets.Menu fileMenus;
@@ -509,6 +526,7 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
       .safeAppendDirectory( BasePropertyHandler.getProperty( "documentationDirBase", "docs/" ),
           BaseMessages.getString( PKG, "Spoon.Title.STRING_DOCUMENT_WELCOME" ) );
 
+  //org.pentaho.di.laf.BasePropertyHandler
   private static final String DOCUMENTATION_URL = Const
       .getDocUrl( BasePropertyHandler.getProperty( "documentationUrl" ) );
 
@@ -532,18 +550,22 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
 
   public static final String EDIT_SELECTION_EXTENSION = "EDIT_SELECTION_EXTENSION";
 
+  //org.eclipse.swt.widgets.Compositebvjn
   private Composite tabComp;
 
+  //org.eclipse.swt.widgets.Tree
   private Tree selectionTree;
 
   private Tree coreObjectsTree;
 
+  //org.pentaho.di.trans.TransExecutionConfiguration
   private TransExecutionConfiguration transExecutionConfiguration;
 
   private TransExecutionConfiguration transPreviewExecutionConfiguration;
 
   private TransExecutionConfiguration transDebugExecutionConfiguration;
 
+  //org.pentaho.di.job.JobExecutionConfiguration
   private JobExecutionConfiguration jobExecutionConfiguration;
 
   // private Menu spoonMenu; // Connections,
@@ -555,8 +577,10 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
   private List<Object[]> menuListeners = new ArrayList<>();
 
   // loads the lifecycle listeners
+  //org.pentaho.di.core.lifecycle.LifecycleSupport
   private LifecycleSupport lifecycleSupport = new LifecycleSupport();
 
+  //org.eclipse.swt.widgets.Composite 符合材料 合成物
   private Composite mainComposite;
 
   private boolean viewSelected;
@@ -571,6 +595,7 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
 
   private DefaultToolTip toolTip;
 
+  //org.pentaho.di.shared.SharedObjects
   public Map<String, SharedObjects> sharedObjectsFileMap;
 
   /**
@@ -578,30 +603,40 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
    */
   public String lastDirOpened;
 
+  //org.pentaho.di.ui.spoon.FileListener
   private List<FileListener> fileListeners = new ArrayList<>();
 
+  //org.pentaho.ui.xul.XulDomContainer
   private XulDomContainer mainSpoonContainer;
 
   // Menu controllers to modify the main spoon menu
+  //org.pentaho.di.ui.spoon.XulDomContainer
   private List<ISpoonMenuController> menuControllers = new ArrayList<>();
 
+  //org.pentaho.ui.xul.containers.XulToolbar
   private XulToolbar mainToolbar;
 
+  //org.pentaho.ui.xul.swt.tags.SwtDeck
   private SwtDeck deck;
 
   public static final String XUL_FILE_MAIN = "ui/spoon.xul";
 
+  //org.pentaho.ui.xul.XulComponent
   private Map<String, XulComponent> menuMap = new HashMap<>();
 
+  //org.pentaho.di.ui.repository.RepositoriesDialog
   private RepositoriesDialog loginDialog;
 
+  //org.pentaho.vfs.ui.VfsFileChooserDialog
   private VfsFileChooserDialog vfsFileChooserDialog;
 
   // the id of the perspective to start in, if any
   protected String startupPerspective = null;
 
+  //org.pentaho.di.pan.CommandLineOption
   private CommandLineOption[] commandLineOptions;
 
+  //org.pentaho.metastore.stores.delegate.DelegatingMetaStore
   public DelegatingMetaStore metaStore;
 
   private static PrintStream originalSystemOut = System.out;
@@ -727,26 +762,42 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
   }
 
   private static void initLogging( CommandLineOption[] options ) throws KettleException {
+    //从参数数组中找到logfile参数的值
     StringBuilder optionLogFile = getCommandLineOption( options, "logfile" ).getArgument();
+    //从参数数组中找到level参数的值
     StringBuilder optionLogLevel = getCommandLineOption( options, "level" ).getArgument();
 
     // Set default Locale:
+    //org.pentaho.di.core.Const
     Locale.setDefault( Const.DEFAULT_LOCALE );
 
+    //org.pentaho.di.core.util.Utils
     if ( !Utils.isEmpty( optionLogFile ) ) {
+        //如果optionLogFile是空，new一个FileLoggingEventListener。
+        //org.pentaho.di.core.logging.FileLoggingEventListener
+        //把log内容写入到optionLogFile指定的logfile中，第二个参数标识是否是append
       fileLoggingEventListener = new FileLoggingEventListener( optionLogFile.toString(), true );
       if ( log.isBasic() ) {
+          // log等级是basic
+          //得到文件名
         String filename = fileLoggingEventListener.getFilename();
+        //如果是basic层级的话，写的log是Spoon.Log.LoggingToFile + 文件名
         log.logBasic( BaseMessages.getString( PKG, "Spoon.Log.LoggingToFile" ) + filename );
       }
+      //org.pentaho.di.core.logging.KettleLogStore
+      //getAppender 中的 Appender 是 LoggingBuffer 类 This class keeps the last N lines in a buffer
+      //addLoggingEventListener(参数) 参数类型为 KettleLoggingEventListener
       KettleLogStore.getAppender().addLoggingEventListener( fileLoggingEventListener );
     } else {
       fileLoggingEventListener = null;
     }
 
+    //假如optionLogLevel log等级不是空
     if ( !Utils.isEmpty( optionLogLevel ) ) {
+        //设置log的记录等级
       log.setLogLevel( LogLevel.getLogLevelForCode( optionLogLevel.toString() ) );
       if ( log.isBasic() ) {
+          //假如log等级是basic
         // "Logging is at level : "
         log.logBasic( BaseMessages.getString( PKG, "Spoon.Log.LoggingAtLevel" ) + log.getLogLevel().getDescription() );
       }
@@ -754,22 +805,42 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
   }
 
   public Spoon() {
+      //构造函数
+      //调用本类中的构造函数
     this( null );
   }
 
   public Spoon( Repository rep ) {
+      //调用父类的构造函数
+      //父类是org.eclipse.jface.window.ApplicationWindow
     super( null );
+    //本类加上菜单栏
+    //继承自ApplicationWindow类的addMenuBar，假如餐单栏
     this.addMenuBar();
+    //new一个写log的东西
     log = new LogChannel( APP_NAME );
+    //org.pentaho.di.core.gui.SpoonFactory
+    //setSpoonInstance是静态方法
+    //setSpoonInstance的参数，是静态的SpoonInterface
+    //org.pentaho.di.core.gui.SpoonInterface
+    //SpoonInterface extends OverwritePrompter
+    //OverwritePrompter 是 org.pentaho.di.core.gui.OverwritePrompter 是个接口
     SpoonFactory.setSpoonInstance( this );
 
     // Load at least one local Pentaho metastore and add it to the delegating metastore
-    //
+    //org.pentaho.metastore.stores.delegate.DelegatingMetaStore,DelegatingMetaStore implements IMetaStore
     metaStore = new DelegatingMetaStore();
     try {
+        //org.pentaho.di.metastore.MetaStoreConst
+        //打开本地的元数据存储（或许是文件）
       IMetaStore localMetaStore = MetaStoreConst.openLocalPentahoMetaStore();
+      //org.pentaho.metastore.stores.delegate.DelegatingMetaStore metaStore 是 DelegatingMetaStore
+      //加入元数据存储
       metaStore.addMetaStore( localMetaStore );
+      //设置活动的元数据存的名字
       metaStore.setActiveMetaStoreName( localMetaStore.getName() );
+      //Repository rep ,rep是从构造函数中传入的参数
+      //如果出入的rep不是空，就用传入的rep，并且设置活动的元数据存储为传入的rep
       if ( rep != null ) {
         metaStore.addMetaStore( 0, rep.getMetaStore() );
         metaStore.setActiveMetaStoreName( rep.getMetaStore().getName() );
@@ -8665,18 +8736,24 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
   }
 
   public void setRepository( Repository rep ) {
+      //本类的rep类变量被赋值
     this.rep = rep;
+    //rep不等于空，就把rep的名字赋给本类的repositoryName，否则repositoryName被赋予null
     this.repositoryName = rep != null ? rep.getName() : null;
     try {
 
       // Keep one metastore here...
-      //
+      //如果metaStore存储了超过1个的MetaStore信息
       if ( metaStore.getMetaStoreList().size() > 1 ) {
+          //remove(int index)
+        //Removes the element at the specified position in this list (optional operation).
+        //这不清楚的是，指移走在0位置的这个元存储，那剩下的也许不止一个。就用剩下的那些中的第0个位置的metastore吗？这个地方没看明白
         metaStore.getMetaStoreList().remove( 0 );
         metaStore.setActiveMetaStoreName( metaStore.getMetaStoreList().get( 0 ).getName() );
       }
 
       if ( rep != null ) {
+          //得到元数据存储的能力
         this.capabilities = rep.getRepositoryMeta().getRepositoryCapabilities();
 
         // add a wrapper metastore to the delegation
