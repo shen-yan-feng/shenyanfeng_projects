@@ -375,9 +375,17 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
 
   private static Class<?> PKG = Spoon.class;
 
+  //org.pentaho.di.core.logging.LoggingObjectInterface
+  //org.pentaho.di.core.logging.SimpleLoggingObject
   public static final LoggingObjectInterface loggingObject = new SimpleLoggingObject( "Spoon", LoggingObjectType.SPOON,
       null );
 
+  //org.pentaho.di.i18n.BaseMessages
+  /**
+ * BaseMessage is called by all Message classes to enable the delegation of message delivery, by key to be delegated to
+ * the appropriately authoritative supplier as registered in the LAFFactory enabling both i18n as well as pluggable look
+ * and feel (LAF)
+ * */
   public static final String STRING_TRANSFORMATIONS = BaseMessages.getString( PKG, "Spoon.STRING_TRANSFORMATIONS" );
 
   public static final String STRING_JOBS = BaseMessages.getString( PKG, "Spoon.STRING_JOBS" );
@@ -435,6 +443,7 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
 
   private static Spoon staticSpoon;
 
+  //org.pentaho.di.core.logging.LogChannelInterface
   private static LogChannelInterface log;
 
   private Display display;
