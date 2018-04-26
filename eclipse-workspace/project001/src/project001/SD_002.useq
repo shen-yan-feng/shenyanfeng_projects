@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" generate-combined-fragments="true">  
+  <object id="1" language="java" name="project001.User" project="project001" file="/project001/src/project001/User.java" 
+    binary="false" label="user" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="158" y="0"/>    
+    <execution id="2">      
+      <position height="84" width="0" x="0" y="173"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="21" width="0" x="0" y="215"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="setSex(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>
+</sequence-diagram>
