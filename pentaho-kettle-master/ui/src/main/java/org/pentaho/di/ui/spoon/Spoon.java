@@ -6949,6 +6949,10 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
       etlPerspective = activePerspectiveId.equals( MainSpoonPerspective.ID );
     }
 
+    //org.pentaho.di.ui.spoon.trans.TransGraph
+    //This class handles the display of the transformations in a graphical way using icons, arrows, etc. One transformation
+    // is handled per TransGraph
+    //得到活动的TransGraph
     TransGraph transGraph = getActiveTransGraph();
     if ( transGraph != null ) {
       disablePreviewButton = !( transGraph.isRunning() && !transGraph.isHalting() );
@@ -8799,9 +8803,11 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
     UISupportRegistery
       .getInstance().registerUISupport( RepositorySecurityManager.class, ManageUserUISupport.class );
     if ( rep != null ) {
-        //
+        //org.pentaho.di.ui.spoon.SpoonPluginManager implements PluginTypeListener
+        //Notifies all registered SpoonLifecycleListeners of the given SpoonLifeCycleEvent.
       SpoonPluginManager.getInstance().notifyLifecycleListeners( SpoonLifeCycleEvent.REPOSITORY_CHANGED );
     }
+    //更新transformation delegates，更新job delegates 等
     delegates.update( this );
     enableMenus();
   }

@@ -40,18 +40,24 @@ import org.pentaho.ui.xul.XulDomContainer;
  *
  * @author Will Gorman (wgorman@pentaho.com)
  */
+//org.eclipse.swt.widgets.Composite
 public abstract class AbstractGraph extends Composite {
 
+    //org.pentaho.di.core.gui.Point 点
   protected Point offset, iconoffset, noteoffset;
 
+  //org.eclipse.swt.widgets.ScrollBar 滚动条
   protected ScrollBar vert, hori;
 
+  //org.eclipse.swt.widgets.Canvas 画布
   protected Canvas canvas;
 
   protected float magnification = 1.0f;
 
+  //org.eclipse.swt.widgets 放大缩小标签
   protected Combo zoomLabel;
 
+  //org.pentaho.ui.xul.XulDomContainer xul dom 容器
   protected XulDomContainer xulDomContainer;
 
   public AbstractGraph( Composite parent, int style ) {

@@ -37,6 +37,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 
+//没弄懂是什么 猜 是 tab 的集合
 public class TabSet implements SelectionListener, CTabFolder2Listener {
 
   protected CTabFolder tabfolder;

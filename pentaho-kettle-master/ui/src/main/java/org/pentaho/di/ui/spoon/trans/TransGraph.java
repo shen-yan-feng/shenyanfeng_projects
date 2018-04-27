@@ -211,6 +211,16 @@ import java.util.concurrent.Callable;
  * @author Matt
  * @since 17-mei-2003
  */
+//org.pentaho.di.ui.spoon.AbstractGraph
+//org.pentaho.ui.xul.impl.XulEventHandler
+//org.pentaho.di.core.gui.Redrawable
+//org.pentaho.di.ui.spoon.TabItemInterface
+//org.pentaho.di.core.logging.LogParentProvidedInterface
+//org.eclipse.swt.events.MouseListener
+//org.eclipse.swt.events.MouseMoveListener
+//org.eclipse.swt.events.MouseTrackListener
+//org.eclipse.swt.events.MouseWheelListener
+//org.eclipse.swt.events.KeyListener
 public class TransGraph extends AbstractGraph implements XulEventHandler, Redrawable, TabItemInterface,
   LogParentProvidedInterface, MouseListener, MouseMoveListener, MouseTrackListener, MouseWheelListener, KeyListener {
   private static Class<?> PKG = Spoon.class; // for i18n purposes, needed by Translator2!!
@@ -237,18 +247,29 @@ public class TransGraph extends AbstractGraph implements XulEventHandler, Redraw
 
   public static final String TRANS_GRAPH_ENTRY_AGAIN = "trans-graph-entry-align";
 
+  // This class defines information about a transformation and offers methods to save and load it from XML or a PDI
+ //database repository, as well as methods to alter a transformation by adding/removing databases, steps, hops, etc.
   private TransMeta transMeta;
 
+  // * This class represents the information and operations associated with the concept of a Transformation. It loads,
+ //* instantiates, initializes, runs, and monitors the execution of the transformation contained in the specified
+ //* TransInfo object.
+  //org.pentaho.di.trans.Trans
   public Trans trans;
 
+  //org.eclipse.swt.widgets.Shell
   private Shell shell;
 
+  //org.eclipse.swt.widgets.Composite
   private Composite mainComposite;
 
+  //org.eclipse.jface.window.DefaultToolTip
   private DefaultToolTip toolTip;
 
+  //org.pentaho.di.ui.core.widget.CheckBoxToolTip
   private CheckBoxToolTip helpTip;
 
+  //org.pentaho.ui.xul.containers.XulToolbar
   private XulToolbar toolbar;
 
   private int iconsize;
@@ -261,16 +282,22 @@ public class TransGraph extends AbstractGraph implements XulEventHandler, Redraw
 
   private Point[] previous_note_locations;
 
+  //org.pentaho.di.trans.step.StepMeta
+  //This class contains everything that is needed to define a step.  
   private List<StepMeta> selectedSteps;
 
   private StepMeta selectedStep;
 
   private List<StepMeta> mouseOverSteps;
 
+  //org.pentaho.di.core.NotePadMeta
+  //Describes a note displayed on a Transformation, Job, Schema, or Report.
   private List<NotePadMeta> selectedNotes;
 
   private NotePadMeta selectedNote;
 
+  //org.pentaho.di.trans.TransHopMeta
+  //Defines a link between 2 steps in a transformation
   private TransHopMeta candidate;
 
   private Point drop_candidate;
@@ -290,11 +317,14 @@ public class TransGraph extends AbstractGraph implements XulEventHandler, Redraw
   /**
    * A list of remarks on the current Transformation...
    */
+  //org.pentaho.di.core.CheckResultInterface
   private List<CheckResultInterface> remarks;
 
   /**
    * A list of impacts of the current transformation on the used databases.
    */
+  //org.pentaho.di.trans.DatabaseImpact
+  //对数据库的影响 读影响 写影响 读写影响 等等
   private List<DatabaseImpact> impact;
 
   /**
@@ -302,8 +332,13 @@ public class TransGraph extends AbstractGraph implements XulEventHandler, Redraw
    */
   private boolean impactFinished;
 
+  //org.pentaho.di.trans.debug.TransDebugMeta
+   //* For a certain transformation, we want to be able to insert break-points into a transformation. These breakpoints can
+ //* be applied to steps. When a certain condition is met, the transformation will be paused and the caller will be
+ //* informed of this fact through a listener system.
   private TransDebugMeta lastTransDebugMeta;
 
+  //org.pentaho.ui.xul.containers.XulMenupopup
   private Map<String, XulMenupopup> menuMap = new HashMap<>();
 
   protected int currentMouseX = 0;
@@ -316,13 +351,18 @@ public class TransGraph extends AbstractGraph implements XulEventHandler, Redraw
 
   protected StepMeta currentStep;
 
+  //org.pentaho.di.core.gui.AreaOwner  
+  // * When we draw something in Spoon (TransPainter) we keep a list of all the things we draw and the object that's behind
+ //* it. That should make it a lot easier to track what was drawn, setting tooltips, etc.
   private List<AreaOwner> areaOwners;
 
   // private Text filenameLabel;
+  //org.eclipse.swt.custom.SashForm
   private SashForm sashForm;
 
   public Composite extraViewComposite;
 
+  //org.eclipse.swt.custom.CTabFolder
   public CTabFolder extraViewTabFolder;
 
   private boolean initialized;
@@ -374,7 +414,9 @@ public class TransGraph extends AbstractGraph implements XulEventHandler, Redraw
 
   private StepMeta showTargetStreamsStep;
 
+  //java.util.Timer
   Timer redrawTimer;
+  //org.eclipse.swt.widgets.ToolItem
   private ToolItem stopItem;
 
   public void setCurrentNote( NotePadMeta ni ) {
@@ -432,9 +474,14 @@ public class TransGraph extends AbstractGraph implements XulEventHandler, Redraw
     stepListeners = new ArrayList<>();
 
     try {
+        //org.pentaho.di.ui.xul.KettleXulLoader
       KettleXulLoader loader = new KettleXulLoader();
       loader.setIconsSize( 16, 16 );
       loader.setSettingsManager( XulSpoonSettingsManager.getInstance() );
+      //org.pentaho.di.ui.spoon.XulSpoonResourceBundle
+      // * Static class wrapping Spoon's BaseMessages class and Look and Feel bundle.
+ //*
+ //* This wrapper is required for XUL portions of Spoon as the XUL system internationalizes via ResourceBundles.
       ResourceBundle bundle = new XulSpoonResourceBundle( Spoon.class );
       XulDomContainer container = loader.loadXul( XUL_FILE_TRANS_TOOLBAR, bundle );
       container.addEventHandler( this );
@@ -446,7 +493,9 @@ public class TransGraph extends AbstractGraph implements XulEventHandler, Redraw
       log.logError( "Error loading XUL resource bundle for Spoon", e1 );
     }
 
+    //org.eclipse.swt.layout.FormLayout
     setLayout( new FormLayout() );
+    //org.eclipse.swt.layout.GridData
     setLayoutData( new GridData( GridData.FILL_BOTH ) );
 
     // Add a tool-bar at the top of the tab
