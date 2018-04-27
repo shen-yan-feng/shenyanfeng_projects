@@ -8757,11 +8757,16 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
         this.capabilities = rep.getRepositoryMeta().getRepositoryCapabilities();
 
         // add a wrapper metastore to the delegation
-        //
+        //目前是我的猜想 rep代表一个接口 实际运行时 会传过来一个实现了这个接口的实例，这个实例实现了接口中的getMetaStore()方法
+        //因为，在没运行时，在IDE中，ctrl+left button,点getMetaStore（），会转到接口中该方法。接口中没有该方法的实现。
+        //看看代理模式。看看是否属于代理模式。因为从下面看，log中say，added to delegating metastore
         IMetaStore repositoryMetaStore = rep.getMetaStore();
         if ( repositoryMetaStore != null ) {
+            //加入该元数据存储
           metaStore.addMetaStore( 0, repositoryMetaStore ); // first priority for explicitly connected repositories.
+          //设置当前活动的元数据存储的名称
           metaStore.setActiveMetaStoreName( repositoryMetaStore.getName() );
+          //写log，连上了元数据村存储。
           log.logBasic( "Connected to metastore : "
             + repositoryMetaStore.getName() + ", added to delegating metastore" );
         } else {
@@ -8771,16 +8776,30 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
       }
     } catch ( MetaStoreException e ) {
       new ErrorDialog(
+              //在shell中，显示一个对话框，设置对话框标题，设置对话框内容，告知连接元数据存储失败。
         shell, BaseMessages.getString( PKG, "Spoon.Dialog.ErrorAddingRepositoryMetaStore.Title" ), BaseMessages
           .getString( PKG, "Spoon.Dialog.ErrorReadingSharedObjects.Message" ), e );
     }
 
     // Registering the UI Support classes
+    //org.pentaho.di.ui.reposotory.repositoryexploreer.UISupportRegistery.
+    //it is a class
+    //UISupportRegistery.getInstance() 单例模式，得到实例
+    //registerUISupport(Class<? extends IRepositoryService> service,
+    //Class<? extends IRepositoryExplorerUISupport> supportClass)
+    //第一个参数IRepositoryService的说明 org.pentaho.di.repository.IRepositoryService
+    //This is a marker interface for a service to identify itselt as a repository service
+    //第二个参数BaseRepositoryExplorerUISupport的说明
+    //org.pentaho.di.ui.repository.repositoryexplorer.uisupport.BaseRepositoryExplorerUISupport
+    //BaseRepositoryExplorerUISupport extends AbstractRepositoryExplorerUISupport
+    //这行没看懂
     UISupportRegistery.getInstance().registerUISupport(
       RepositorySecurityProvider.class, BaseRepositoryExplorerUISupport.class );
+    //这行没看懂
     UISupportRegistery
       .getInstance().registerUISupport( RepositorySecurityManager.class, ManageUserUISupport.class );
     if ( rep != null ) {
+        //
       SpoonPluginManager.getInstance().notifyLifecycleListeners( SpoonLifeCycleEvent.REPOSITORY_CHANGED );
     }
     delegates.update( this );
