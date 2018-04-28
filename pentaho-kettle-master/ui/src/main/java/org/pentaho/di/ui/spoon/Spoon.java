@@ -891,13 +891,16 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
   }
 
   public void init( TransMeta ti ) {
+      //org.eclipse.swt.layout.FormLayout
     FormLayout layout = new FormLayout();
     layout.marginWidth = 0;
     layout.marginHeight = 0;
     shell.setLayout( layout );
 
+    //加入TransFileListener
     addFileListener( new TransFileListener() );
 
+    //加入JobFileListener
     addFileListener( new JobFileListener() );
 
     // INIT Data structure
@@ -940,6 +943,7 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
 
       mainSpoonContainer = xulLoader.loadXul( XUL_FILE_MAIN, new XulSpoonResourceBundle() );
 
+      //org.pentaho.ui.xul.binding.DefaultBindingFactory
       BindingFactory bf = new DefaultBindingFactory();
       bf.setDocument( mainSpoonContainer.getDocumentRoot() );
       mainSpoonContainer.addEventHandler( this );
@@ -960,7 +964,9 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
         startupPerspective = mainPerspective.getId();
       }
 
+      //设置启动时的界面模样
       SpoonPerspectiveManager.getInstance().setStartupPerspective( startupPerspective );
+      //加入主界面模样
       SpoonPerspectiveManager.getInstance().addPerspective( mainPerspective );
 
       SpoonPluginManager.getInstance().applyPluginsForContainer( "spoon", mainSpoonContainer );
@@ -1006,15 +1012,20 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
     fdSash.right = new FormAttachment( 100, 0 );
     sashform.setLayoutData( fdSash );
 
+    //创建弹出式菜单
     createPopupMenus();
+    //加入树
     addTree();
+    //加入tab 目前理解是tab页
     addTabs();
+    //主界面布局上设置tab
     mainPerspective.setTabset( this.tabfolder );
     ( (Composite) deck.getManagedObject() ).layout( true, true );
 
     SpoonPluginManager.getInstance().notifyLifecycleListeners( SpoonLifeCycleEvent.STARTUP );
 
     // Add a browser widget
+    //启动时显示欢迎界面
     if ( props.showWelcomePageOnStartup() ) {
       showWelcomePage();
     }
@@ -1030,6 +1041,7 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
 
     target.addDropListener( new DropTargetListener() {
       @Override
+      //drag进入到目标区域时执行的动作
       public void dragEnter( DropTargetEvent event ) {
         if ( event.detail == DND.DROP_DEFAULT ) {
           if ( ( event.operations & DND.DROP_COPY ) != 0 ) {
@@ -1076,6 +1088,7 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
     } );
 
     // listen for steps being added or removed
+    //监听setp被加入或移动的listener。加入这样的listener
     PluginRegistry.getInstance().addPluginListener( StepPluginType.class, new PluginTypeListener() {
       @Override
       public void pluginAdded( Object serviceObject ) {
@@ -1083,6 +1096,7 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
         Display.getDefault().asyncExec( new Runnable() {
           @Override
           public void run() {
+              //刷新核心对象
             refreshCoreObjects();
           }
         } );
@@ -1094,6 +1108,7 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
         Display.getDefault().asyncExec( new Runnable() {
           @Override
           public void run() {
+              //刷新核心对象
             refreshCoreObjects();
           }
         } );
@@ -1109,6 +1124,7 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
     return mainSpoonContainer;
   }
 
+  //装载指定id的perspective
   public void loadPerspective( String id ) {
     List<SpoonPerspective> perspectives = SpoonPerspectiveManager.getInstance().getPerspectives();
     for ( int pos = 0; pos < perspectives.size(); pos++ ) {
@@ -1120,6 +1136,7 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
     }
   }
 
+  //装载指定id的perspective
   public void loadPerspective( int pos ) {
     try {
       SpoonPerspectiveManager.getInstance().activatePerspective(
@@ -1129,10 +1146,12 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
     }
   }
 
+  //得到实例
   public static Spoon getInstance() {
     return staticSpoon;
   }
 
+  //获得文件选择对话框
   public VfsFileChooserDialog getVfsFileChooserDialog( FileObject rootFile, FileObject initialFile ) {
     if ( vfsFileChooserDialog == null ) {
       vfsFileChooserDialog = new VfsFileChooserDialog( shell, new KettleVfsDelegatingResolver(), rootFile, initialFile );
@@ -1243,6 +1262,7 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
       return;
     }
 
+    //org.pentaho.di.ui.core.dialog.EnterSearchDialog
     EnterSearchDialog esd = new EnterSearchDialog( shell );
     if ( !esd.open() ) {
       return;
@@ -1431,6 +1451,7 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
     fillVariables( variables );
 
     // Now ask the use for more info on these!
+    //org.pentaho.di.ui.core.dialog.EnterStringsDialog
     EnterStringsDialog esd = new EnterStringsDialog( shell, SWT.NONE, variables );
     esd.setTitle( BaseMessages.getString( PKG, "Spoon.Dialog.ShowVariables.Title" ) );
     esd.setMessage( BaseMessages.getString( PKG, "Spoon.Dialog.ShowVariables.Message" ) );
@@ -1521,6 +1542,8 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
   }
 
   public void sleep() {
+      //org.eclipse.swt.widgets.Display
+      //Display中的sleep()方法
     display.sleep();
   }
 
@@ -1535,6 +1558,7 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
   /**
    * It's called copySteps, but the job entries also arrive at this location
    */
+  //注意上面的注释，尽管叫copySteps，实际上，除了copy Stemps，也copy job entries。
   public void copySteps() {
     TransMeta transMeta = getActiveTransformation();
     if ( transMeta != null ) {
@@ -1660,6 +1684,7 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
     item.setDisabled( false );
   }
 
+  //创建弹出式菜单
   public void createPopupMenus() {
 
     try {
@@ -1698,18 +1723,22 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
     addMenuLast();
   }
 
+  //执行Transformation
   public void executeTransformation() {
     executeTransformation(
       getActiveTransformation(), true, false, false, false, false, transExecutionConfiguration.getReplayDate(),
       false, transExecutionConfiguration.getLogLevel() );
   }
 
+  //预览Transformation
+  //和执行Transformation，method的参数不同
   public void previewTransformation() {
     executeTransformation(
       getActiveTransformation(), true, false, false, true, false, transDebugExecutionConfiguration
         .getReplayDate(), true, transDebugExecutionConfiguration.getLogLevel() );
   }
 
+  //debug Transformation
   public void debugTransformation() {
     executeTransformation(
       getActiveTransformation(), true, false, false, false, true, transPreviewExecutionConfiguration
@@ -1729,6 +1758,7 @@ public class Spoon extends ApplicationWindow implements AddUndoPositionInterface
   }
 
   public void showLastTransPreview() {
+      //得到活动的TransGraph
     TransGraph transGraph = getActiveTransGraph();
     if ( transGraph != null ) {
       transGraph.showLastPreviewResults();

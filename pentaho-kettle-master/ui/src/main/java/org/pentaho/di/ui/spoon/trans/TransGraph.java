@@ -512,9 +512,12 @@ public class TransGraph extends AbstractGraph implements XulEventHandler, Redraw
     mainComposite.setLayout( new FillLayout() );
 
     // Nick's fix below -------
+    //org.eclipse.swt.widgets.Control
     Control toolbarControl = (Control) toolbar.getManagedObject();
 
+    //org.eclipse.swt.layout.FormData
     FormData toolbarFd = new FormData();
+    //org.eclipse.swt.layout.FormAttachment
     toolbarFd.left = new FormAttachment( 0, 0 );
     toolbarFd.right = new FormAttachment( 100, 0 );
 
@@ -530,11 +533,11 @@ public class TransGraph extends AbstractGraph implements XulEventHandler, Redraw
     mainComposite.setLayoutData( fdMainComposite );
 
     // To allow for a splitter later on, we will add the splitter here...
-    //
+    //窗口添加一个splitter，分成左右2个窗口，可以拖动splitter滑动
     sashForm = new SashForm( mainComposite, SWT.VERTICAL );
 
     // Add a canvas below it, use up all space initially
-    //
+    //在sashForm下面添加一个canvas
     canvas = new Canvas( sashForm, SWT.V_SCROLL | SWT.H_SCROLL | SWT.NO_BACKGROUND | SWT.BORDER );
 
     sashForm.setWeights( new int[] { 100, } );
@@ -571,6 +574,7 @@ public class TransGraph extends AbstractGraph implements XulEventHandler, Redraw
 
     iconsize = spoon.props.getIconSize();
 
+    //把变量设置成null或0等。
     clearSettings();
 
     remarks = new ArrayList<>();
@@ -626,7 +630,9 @@ public class TransGraph extends AbstractGraph implements XulEventHandler, Redraw
     canvas.addKeyListener( this );
 
     // Drag & Drop for steps
+    //org.pentaho.di.core.dnd.XMLTransfer
     Transfer[] ttypes = new Transfer[] { XMLTransfer.getInstance() };
+    //org.eclipse.swt.dnd.DropTarget
     DropTarget ddTarget = new DropTarget( canvas, DND.DROP_MOVE );
     ddTarget.setTransfer( ttypes );
     ddTarget.addDropListener( new DropTargetListener() {
