@@ -6,5 +6,9 @@
 	<classpathentry kind="lib" path="E:/GitHub/shenyanfeng_projects/workspace/XulTest/src/lib/commons-xul-swing-8.1.0.0-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="E:/GitHub/shenyanfeng_projects/workspace/XulTest/src/lib/commons-xul-swt-8.1.0.0-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="E:/GitHub/shenyanfeng_projects/workspace/XulTest/src/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="E:/GitHub/shenyanfeng_projects/workspace/XulTest/src/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="E:/GitHub/shenyanfeng_projects/workspace/XulTest/src/lib/jaxen-1.1.1.jar"/>
+	<classpathentry kind="lib" path="E:/GitHub/shenyanfeng_projects/workspace/XulTest/src/lib/commons-beanutils-1.9.3.jar"/>
+	<classpathentry kind="lib" path="E:/GitHub/shenyanfeng_projects/workspace/XulTest/src/lib/commons-lang-2.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
