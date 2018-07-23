@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>job001</name>
+  <name>job007</name>
   <description/>
   <extended_description/>
   <job_version/>
   <directory>/</directory>
   <created_user>-</created_user>
-  <created_date>2018/07/07 21:29:23.611</created_date>
+  <created_date>2018/07/14 09:04:33.380</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2018/07/07 21:29:23.611</modified_date>
+  <modified_date>2018/07/14 09:04:33.380</modified_date>
   <parameters>
     </parameters>
   <slaveservers>
@@ -303,31 +303,105 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>192</xloc>
-      <yloc>112</yloc>
+      <xloc>208</xloc>
+      <yloc>176</yloc>
     </entry>
     <entry>
-      <name>Create a folder</name>
+      <name>Checks if files exist</name>
       <description/>
-      <type>CREATE_FOLDER</type>
-      <foldername>${Internal.Entry.Current.Directory}/samplefiles</foldername>
-      <fail_of_folder_exists>Y</fail_of_folder_exists>
+      <type>FILES_EXIST</type>
+      <filename/>
+      <fields>
+        <field>
+          <name>E:\GitHub\shenyanfeng_projects\pentaho\practice\MUSIC</name>
+        </field>
+      </fields>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>400</xloc>
-      <yloc>112</yloc>
+      <xloc>416</xloc>
+      <yloc>176</yloc>
+    </entry>
+    <entry>
+      <name>Move Files</name>
+      <description/>
+      <type>MOVE_FILES</type>
+      <move_empty_folders>N</move_empty_folders>
+      <arg_from_previous>N</arg_from_previous>
+      <include_subfolders>N</include_subfolders>
+      <add_result_filesname>N</add_result_filesname>
+      <destination_is_a_file>N</destination_is_a_file>
+      <create_destination_folder>N</create_destination_folder>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <nr_errors_less_than>10</nr_errors_less_than>
+      <success_condition>success_if_no_errors</success_condition>
+      <AddDateBeforeExtension>N</AddDateBeforeExtension>
+      <DoNotKeepFolderStructure>N</DoNotKeepFolderStructure>
+      <iffileexists>do_nothing</iffileexists>
+      <destinationFolder/>
+      <ifmovedfileexists>do_nothing</ifmovedfileexists>
+      <moved_date_time_format/>
+      <create_move_to_folder>N</create_move_to_folder>
+      <add_moved_date>N</add_moved_date>
+      <add_moved_time>N</add_moved_time>
+      <SpecifyMoveFormat>N</SpecifyMoveFormat>
+      <AddMovedDateBeforeExtension>N</AddMovedDateBeforeExtension>
+      <simulate>N</simulate>
+      <fields>
+        <field>
+          <source_filefolder>E:\GitHub\shenyanfeng_projects\pentaho\practice\folder01</source_filefolder>
+          <destination_filefolder>E:\GitHub\shenyanfeng_projects\pentaho\practice\MUSIC</destination_filefolder>
+          <wildcard>artist_.\.mp3</wildcard>
+        </field>
+      </fields>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>624</xloc>
+      <yloc>176</yloc>
+    </entry>
+    <entry>
+      <name>Abort job</name>
+      <description/>
+      <type>ABORT</type>
+      <message>the destination folder E:\GitHub\shenyanfeng_projects\pentaho\practice\MUSIC does not exists</message>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>416</xloc>
+      <yloc>336</yloc>
     </entry>
   </entries>
   <hops>
     <hop>
       <from>START</from>
-      <to>Create a folder</to>
+      <to>Checks if files exist</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Checks if files exist</from>
+      <to>Move Files</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Checks if files exist</from>
+      <to>Abort job</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
     </hop>
   </hops>
   <notepads>

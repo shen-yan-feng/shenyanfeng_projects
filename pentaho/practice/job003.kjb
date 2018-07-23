@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>job001</name>
+  <name>job003</name>
   <description/>
   <extended_description/>
   <job_version/>
+  <job_status>0</job_status>
   <directory>/</directory>
   <created_user>-</created_user>
   <created_date>2018/07/07 21:29:23.611</created_date>
@@ -310,12 +311,56 @@
       <name>Create a folder</name>
       <description/>
       <type>CREATE_FOLDER</type>
-      <foldername>${Internal.Entry.Current.Directory}/samplefiles</foldername>
+      <foldername>${Internal.Entry.Current.Directory}/${MY_FOLDER}</foldername>
       <fail_of_folder_exists>Y</fail_of_folder_exists>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>400</xloc>
+      <yloc>112</yloc>
+    </entry>
+    <entry>
+      <name>Mail</name>
+      <description/>
+      <type>MAIL</type>
+      <server>${SMTP_SERVER}</server>
+      <port>465</port>
+      <destination>406046596@qq.com</destination>
+      <destinationCc/>
+      <destinationBCc/>
+      <replyto>406046596@qq.com</replyto>
+      <replytoname>406046596</replytoname>
+      <subject>JUST A TEST</subject>
+      <include_date>N</include_date>
+      <contact_person/>
+      <contact_phone/>
+      <comment>IT IS JUST A TEST EMAIL.
+
+authentication code
+wovkcaiburfybhej</comment>
+      <include_files>N</include_files>
+      <zip_files>N</zip_files>
+      <zip_name/>
+      <use_auth>Y</use_auth>
+      <use_secure_auth>Y</use_secure_auth>
+      <auth_user>406046596</auth_user>
+      <auth_password>Encrypted 2c9f7d9a309c69b86be0ba869dc9aaad0</auth_password>
+      <only_comment>Y</only_comment>
+      <use_HTML>N</use_HTML>
+      <use_Priority>N</use_Priority>
+      <encoding>UTF-8</encoding>
+      <priority>normal</priority>
+      <importance>normal</importance>
+      <sensitivity>normal</sensitivity>
+      <secureconnectiontype>SSL</secureconnectiontype>
+      <replyToAddresses/>
+      <filetypes>      </filetypes>
+      <embeddedimages>
+      </embeddedimages>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>608</xloc>
       <yloc>112</yloc>
     </entry>
   </entries>
@@ -328,6 +373,15 @@
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Create a folder</from>
+      <to>Mail</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
     </hop>
   </hops>
   <notepads>

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>job001</name>
+  <name>job002</name>
   <description/>
   <extended_description/>
   <job_version/>
+  <job_status>0</job_status>
   <directory>/</directory>
   <created_user>-</created_user>
   <created_date>2018/07/07 21:29:23.611</created_date>
@@ -310,12 +311,36 @@
       <name>Create a folder</name>
       <description/>
       <type>CREATE_FOLDER</type>
-      <foldername>${Internal.Entry.Current.Directory}/samplefiles</foldername>
+      <foldername>${Internal.Entry.Current.Directory}/${MY_FOLDER}</foldername>
       <fail_of_folder_exists>Y</fail_of_folder_exists>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>400</xloc>
+      <yloc>112</yloc>
+    </entry>
+    <entry>
+      <name>Write To Log</name>
+      <description/>
+      <type>WRITE_TO_LOG</type>
+      <logmessage>please to check if you have the right permissions to create the folder.</logmessage>
+      <loglevel>Detailed</loglevel>
+      <logsubject>the folder could't be created</logsubject>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>560</xloc>
+      <yloc>112</yloc>
+    </entry>
+    <entry>
+      <name>Abort job</name>
+      <description/>
+      <type>ABORT</type>
+      <message/>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>704</xloc>
       <yloc>112</yloc>
     </entry>
   </entries>
@@ -328,6 +353,24 @@
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Create a folder</from>
+      <to>Write To Log</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Write To Log</from>
+      <to>Abort job</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
     </hop>
   </hops>
   <notepads>

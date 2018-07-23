@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>job001</name>
+  <name>job006</name>
   <description/>
   <extended_description/>
   <job_version/>
   <directory>/</directory>
   <created_user>-</created_user>
-  <created_date>2018/07/07 21:29:23.611</created_date>
+  <created_date>2018/07/10 22:35:55.851</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2018/07/07 21:29:23.611</modified_date>
+  <modified_date>2018/07/10 22:35:55.851</modified_date>
   <parameters>
     </parameters>
   <slaveservers>
@@ -287,6 +287,26 @@
   <shared_objects_file/>
   <entries>
     <entry>
+      <name>DUMMY</name>
+      <description/>
+      <type>SPECIAL</type>
+      <start>N</start>
+      <dummy>Y</dummy>
+      <repeat>N</repeat>
+      <schedulerType>0</schedulerType>
+      <intervalSeconds>0</intervalSeconds>
+      <intervalMinutes>60</intervalMinutes>
+      <hour>12</hour>
+      <minutes>0</minutes>
+      <weekDay>1</weekDay>
+      <DayOfMonth>1</DayOfMonth>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>432</xloc>
+      <yloc>176</yloc>
+    </entry>
+    <entry>
       <name>START</name>
       <description/>
       <type>SPECIAL</type>
@@ -300,29 +320,46 @@
       <minutes>0</minutes>
       <weekDay>1</weekDay>
       <DayOfMonth>1</DayOfMonth>
-      <parallel>N</parallel>
+      <parallel>Y</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>192</xloc>
-      <yloc>112</yloc>
+      <xloc>208</xloc>
+      <yloc>176</yloc>
     </entry>
     <entry>
-      <name>Create a folder</name>
+      <name>DUMMY 2</name>
       <description/>
-      <type>CREATE_FOLDER</type>
-      <foldername>${Internal.Entry.Current.Directory}/samplefiles</foldername>
-      <fail_of_folder_exists>Y</fail_of_folder_exists>
+      <type>SPECIAL</type>
+      <start>N</start>
+      <dummy>Y</dummy>
+      <repeat>N</repeat>
+      <schedulerType>0</schedulerType>
+      <intervalSeconds>0</intervalSeconds>
+      <intervalMinutes>60</intervalMinutes>
+      <hour>12</hour>
+      <minutes>0</minutes>
+      <weekDay>1</weekDay>
+      <DayOfMonth>1</DayOfMonth>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>400</xloc>
-      <yloc>112</yloc>
+      <xloc>432</xloc>
+      <yloc>304</yloc>
     </entry>
   </entries>
   <hops>
     <hop>
       <from>START</from>
-      <to>Create a folder</to>
+      <to>DUMMY</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>START</from>
+      <to>DUMMY 2</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
