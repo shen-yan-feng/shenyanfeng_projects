@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+>>>>>>> dcaab2042f03466c716ee4cf962bef4e21f11182
 <job>
   <name>job002</name>
   <description/>
